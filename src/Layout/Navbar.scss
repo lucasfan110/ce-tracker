@@ -1,0 +1,29 @@
+@import "../sass/abstracts/mixins";
+
+.nav {
+    margin-top: 1rem;
+
+    &__container {
+        @include container;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__logo {
+        font-size: 3rem;
+        color: $color-primary;
+        font-weight: bold;
+    }
+
+    &__list {
+        list-style: none;
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+    }
+
+    &__link {
+        text-decoration: none;
+    }
+}

@@ -1,0 +1,34 @@
+@import "../sass/abstracts/variables";
+
+.btn {
+    background: none;
+    border: none;
+    font-size: inherit;
+    color: inherit;
+    font-family: inherit;
+    cursor: pointer;
+    padding: 1.2rem 1.4rem;
+    border-radius: 0.6rem;
+    transition: all 0.2s;
+    text-decoration: none;
+
+    &--primary {
+        background-color: $color-primary;
+        color: $color-white;
+        box-shadow: 0 1rem 4rem $color-box-shadow;
+
+        &:hover {
+            background-color: $color-primary-dark;
+        }
+    }
+
+    &--primary {
+        background-color: $color-primary;
+        color: $color-white;
+        box-shadow: 0 1rem 4rem $color-box-shadow;
+
+        &:hover {
+            background-color: $color-primary-dark;
+        }
+    }
+}
