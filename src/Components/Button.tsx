@@ -3,7 +3,7 @@ import "./Button.scss";
 
 export type Variation = "primary";
 
-interface Props extends React.ComponentPropsWithoutRef<"button"> {
+interface Props extends React.ComponentPropsWithRef<"button"> {
     variation?: Variation;
 }
 

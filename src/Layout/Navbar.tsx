@@ -1,6 +1,5 @@
-import { Link } from "react-router-dom";
 import "./Navbar.scss";
-import Button from "../Components/Button";
+import LinkButton from "../Components/LinkButton";
 
 export default function Navbar() {
     return (
@@ -12,14 +11,12 @@ export default function Navbar() {
                 <div className="nav__right">
                     <ul className="nav__list">
                         <li>
-                            <Link to="login">
-                                <Button>Log in</Button>
-                            </Link>
+                            <LinkButton to="login">Log in</LinkButton>
                         </li>
                         <li>
-                            <Link to="signup">
-                                <Button variation="primary">Sign up</Button>
-                            </Link>
+                            <LinkButton to="signup" variation="primary">
+                                Sign up
+                            </LinkButton>
                         </li>
                     </ul>
                 </div>
