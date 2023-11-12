@@ -1,0 +1,38 @@
+@import "../../sass/abstracts/mixins";
+
+.section-intro {
+    padding-top: 15rem;
+    padding-bottom: 60rem;
+    position: relative;
+
+    background-image: linear-gradient(
+            to right bottom,
+            rgba(lighten($color-primary, 35%), 0.8),
+            rgba(darken($color-primary, 20%), 0.8)
+        ),
+        url(https://images.unsplash.com/photo-1492462543947-040389c4a66c?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+    background-size: cover;
+    background-position: center center;
+
+    .container {
+        @include container;
+    }
+
+    .heading {
+        max-width: 50rem;
+        animation: moveInLeft 1s ease-in-out;
+    }
+
+    .paragraph {
+        animation: moveInRight 1s ease-in-out 0.5s;
+        animation-fill-mode: backwards;
+        margin-top: 2rem;
+    }
+
+    .get-started {
+        margin-top: 2rem;
+        animation: moveInBottom 1s ease-in-out 1s;
+        animation-fill-mode: backwards;
+        padding: 1.8rem 2rem;
+    }
+}

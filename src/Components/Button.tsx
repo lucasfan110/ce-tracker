@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import "./Button.scss";
 
-export type Variation = "primary";
+export type Variation = "primary" | "secondary";
 
 interface Props extends React.ComponentPropsWithRef<"button"> {
     variation?: Variation;

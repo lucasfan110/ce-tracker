@@ -12,6 +12,10 @@
     transition: all 0.2s;
     text-decoration: none;
 
+    &:hover {
+        background-color: $color-gray-light;
+    }
+
     &--primary {
         background-color: $color-primary;
         color: $color-white;
@@ -19,6 +23,16 @@
 
         &:hover {
             background-color: $color-primary-dark;
+        }
+    }
+
+    &--secondary {
+        background-color: $color-secondary;
+        color: $color-white;
+        box-shadow: 0 1rem 4rem $color-box-shadow;
+
+        &:hover {
+            background-color: $color-secondary-dark;
         }
     }
 }

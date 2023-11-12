@@ -1,7 +1,7 @@
 @import "../sass/abstracts/mixins";
 
 .nav {
-    margin-top: 1rem;
+    margin: 1rem 0;
 
     &__container {
         @include container;
@@ -10,10 +10,24 @@
         align-items: center;
     }
 
+    &__left {
+        overflow: auto;
+    }
+
     &__logo {
         font-size: 3rem;
         color: $color-primary;
         font-weight: bold;
+        text-decoration: none;
+        transition: all 0.5s;
+        text-align: center;
+        padding: 0.6rem 0.7rem;
+        border-radius: 4px;
+
+        &:hover {
+            color: $color-white;
+            background-color: $color-primary;
+        }
     }
 
     &__list {
