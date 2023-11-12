@@ -1,0 +1,17 @@
+.section-sign-in {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    flex-direction: column;
+    position: relative;
+
+    .logo-animation {
+        position: absolute;
+        animation: logoAnimation 1.5s forwards;
+    }
+
+    .login {
+        animation: formZoomInAnimation 1s 1.5s backwards;
+    }
+}

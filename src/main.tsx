@@ -9,12 +9,17 @@ import {
 import "./index.scss";
 import Layout from "./Layout";
 import IndexPage from "./Pages/IndexPage";
+import SignInPage from "./Pages/SignInPage";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
-        <Route path="/" element={<Layout />}>
-            <Route index element={<IndexPage />}></Route>
-        </Route>
+        <>
+            <Route path="/" element={<Layout />}>
+                <Route index element={<IndexPage />}></Route>
+            </Route>
+            <Route path="/login" element={<SignInPage />} />
+            <Route path="/signup" element={<SignInPage />} />
+        </>
     )
 );
 

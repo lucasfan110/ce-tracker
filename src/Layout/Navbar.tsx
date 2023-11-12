@@ -1,6 +1,7 @@
-import "./Navbar.scss";
-import LinkButton from "../Components/LinkButton";
 import { Link } from "react-router-dom";
+import LinkButton from "../Components/LinkButton";
+import Logo from "../Components/Logo";
+import "./Navbar.scss";
 
 export default function Navbar() {
     return (
@@ -8,7 +9,7 @@ export default function Navbar() {
             <div className="nav__container">
                 <div className="nav__left">
                     <Link to="/" className="nav__logo">
-                        CE Tracker
+                        <Logo />
                     </Link>
                 </div>
                 <div className="nav__right">

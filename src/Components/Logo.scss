@@ -1,0 +1,25 @@
+@import "../sass/abstracts/variables";
+
+.logo {
+    font-size: 3rem;
+    color: $color-primary;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.2s;
+    text-align: center;
+    padding: 0.6rem 0.7rem;
+    border-radius: 4px;
+    font-family: inherit;
+    display: block;
+
+    &--hover {
+        &:hover {
+            color: $color-white;
+            background-color: $color-primary;
+        }
+    }
+}
+
+p.logo {
+    cursor: default;
+}
