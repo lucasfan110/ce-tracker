@@ -15,10 +15,13 @@ export default function Navbar() {
                 <div className="nav__right">
                     <ul className="nav__list">
                         <li>
-                            <LinkButton to="login">Log in</LinkButton>
+                            <LinkButton to="/sign-in">Log in</LinkButton>
                         </li>
                         <li>
-                            <LinkButton to="signup" variation="primary">
+                            <LinkButton
+                                to="/sign-in?type=signup"
+                                variation="primary"
+                            >
                                 Sign up
                             </LinkButton>
                         </li>

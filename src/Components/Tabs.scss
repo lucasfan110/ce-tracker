@@ -1,0 +1,22 @@
+@import "../sass/abstracts/variables";
+
+.tabs {
+    &__titles {
+        display: flex;
+    }
+
+    &__title {
+        background: none;
+        border: none;
+        font-family: inherit;
+        font-size: inherit;
+        border-bottom: 1px solid $color-gray-light;
+        padding: 1rem 5rem;
+        cursor: pointer;
+
+        &--active {
+            cursor: default;
+            border-bottom: 1px solid $color-gray-1;
+        }
+    }
+}

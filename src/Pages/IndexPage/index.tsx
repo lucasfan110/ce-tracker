@@ -1,5 +1,5 @@
-import LinkButton from "../Components/LinkButton";
-import "./IndexPage.scss";
+import LinkButton from "../../Components/LinkButton";
+import "./index.scss";
 
 export default function IndexPage() {
     return (
@@ -17,7 +17,7 @@ export default function IndexPage() {
                     <LinkButton
                         variation="secondary"
                         className="get-started"
-                        to="/signup"
+                        to="/sign-in?type=signup"
                     >
                         Get started
                     </LinkButton>
