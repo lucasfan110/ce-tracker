@@ -19,8 +19,7 @@ const router = createBrowserRouter(
             </Route>
             <Route path="/sign-in" element={<SignInPage />} />
         </>
-    ),
-    { basename: "ce-tracker" }
+    )
 );
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
