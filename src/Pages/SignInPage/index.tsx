@@ -35,6 +35,7 @@ export default function SignInPage() {
                 </div>
 
                 <div className="sign-in">
+                    <Logo className="sign-in__logo" />
                     <Tabs
                         tabs={tabs}
                         activeTabLabel={activeTab}

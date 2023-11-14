@@ -13,5 +13,10 @@
 
     .sign-in {
         animation: formZoomInAnimation 1s 1.5s backwards;
+        backface-visibility: hidden;
+
+        &__logo {
+            margin-bottom: 2rem;
+        }
     }
 }

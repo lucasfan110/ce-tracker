@@ -9,14 +9,21 @@ interface Props {
      * Whether to navigate back to `/` when clicked
      */
     navigateWhenClick?: boolean;
+
+    className?: string;
 }
 
 export default function Logo({
     enableHoverEffect = true,
     navigateWhenClick = true,
+    className,
 }: Props) {
     const elementProps = {
-        className: classNames("logo", { "logo--hover": enableHoverEffect }),
+        className: classNames(
+            "logo",
+            { "logo--hover": enableHoverEffect },
+            className
+        ),
         children: "CE Tracker",
     };
 
