@@ -6,7 +6,10 @@ import SignUp from "./SignUp";
 import "./index.scss";
 
 export default function SignInPage() {
-    const searchParams = new URLSearchParams(window.location.search);
+    const searchParams = new URLSearchParams(
+        // I'm not using `window.location.search` because it doesn't work with hash router
+        window.location.href.split("?")[1]
+    );
     const signInType = searchParams.get("type") || "login";
     const [activeTab, setActiveTab] = useState(signInType);
 
