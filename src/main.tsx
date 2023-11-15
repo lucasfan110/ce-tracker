@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import {
-    createBrowserRouter,
+    createHashRouter,
     createRoutesFromElements,
     Route,
     RouterProvider,
@@ -11,7 +11,7 @@ import Layout from "./Layout";
 import IndexPage from "./Pages/IndexPage";
 import SignInPage from "./Pages/SignInPage";
 
-const router = createBrowserRouter(
+const router = createHashRouter(
     createRoutesFromElements(
         <>
             <Route path="/" element={<Layout />}>
