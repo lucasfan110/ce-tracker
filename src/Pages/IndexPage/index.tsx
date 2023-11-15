@@ -6,13 +6,10 @@ export default function IndexPage() {
         <main>
             <section className="section-intro">
                 <div className="u-container">
-                    <h1 className="heading">Lorem ipsum dolor sit amet</h1>
+                    <h1 className="heading">CE Tracker</h1>
                     <p className="paragraph">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing
-                        elit. Quisquam a quia molestias, assumenda excepturi
-                        natus pariatur voluptate earum ut adipisci, est
-                        voluptatibus non ullam culpa! Cumque vel optio fugit
-                        ipsum?
+                        The tool to revolutionize bussiness storage and
+                        management
                     </p>
                     <LinkButton
                         variation="secondary"
