@@ -1,0 +1,31 @@
+@import "../sass/abstracts/mixins";
+@import "../sass/abstracts/variables";
+
+.nav {
+	margin: 1rem 0;
+
+	&__container {
+		@include container;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	&__left {
+		overflow: auto;
+	}
+
+	&__logo {
+		text-decoration: none;
+	}
+
+	&__center {
+		gap: 3rem;
+		display: flex;
+	}
+
+	&__link {
+		text-decoration: none;
+		color: $color-gray-2;
+	}
+}

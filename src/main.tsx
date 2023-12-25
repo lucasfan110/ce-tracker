@@ -1,29 +1,31 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import {
-    createHashRouter,
-    createRoutesFromElements,
-    Route,
-    RouterProvider,
+	createHashRouter,
+	createRoutesFromElements,
+	Route,
+	RouterProvider,
 } from "react-router-dom";
 import "./index.scss";
-import Layout from "./Layout";
+import AppIntroLayout from "./Layouts/AppIntroLayout";
 import IndexPage from "./Pages/IndexPage";
 import SignInPage from "./Pages/SignInPage";
+import DashboardPage from "./Pages/DashboardPage";
 
 const router = createHashRouter(
-    createRoutesFromElements(
-        <>
-            <Route path="/" element={<Layout />}>
-                <Route index element={<IndexPage />}></Route>
-            </Route>
-            <Route path="/sign-in" element={<SignInPage />} />
-        </>
-    )
+	createRoutesFromElements(
+		<>
+			<Route path="/" element={<AppIntroLayout />}>
+				<Route index element={<IndexPage />}></Route>
+			</Route>
+			<Route path="/sign-in" element={<SignInPage />} />
+			<Route path="/dashboard" element={<DashboardPage />} />
+		</>
+	)
 );
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-    <React.StrictMode>
-        <RouterProvider router={router}></RouterProvider>
-    </React.StrictMode>
+	<React.StrictMode>
+		<RouterProvider router={router}></RouterProvider>
+	</React.StrictMode>
 );
