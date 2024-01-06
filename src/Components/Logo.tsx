@@ -1,37 +1,21 @@
 import classNames from "classnames";
 import "./Logo.scss";
-import { Link } from "react-router-dom";
 
 interface Props {
-	enableHoverEffect?: boolean;
-
-	/**
-	 * Whether to navigate back to `/` when clicked
-	 */
-	navigateWhenClick?: boolean;
-
-	className?: string;
-	to: string;
+    enableHoverEffect?: boolean;
+    className?: string;
 }
 
-export default function Logo({
-	enableHoverEffect = true,
-	navigateWhenClick = true,
-	className,
-	to,
-}: Props) {
-	const elementProps = {
-		className: classNames(
-			"logo",
-			{ "logo--hover": enableHoverEffect },
-			className
-		),
-		children: "CE Tracker",
-	};
-
-	if (navigateWhenClick) {
-		return <Link to={to} {...elementProps} />;
-	}
-
-	return <p {...elementProps} />;
+export default function Logo({ enableHoverEffect = true, className }: Props) {
+    return (
+        <p
+            className={classNames(
+                "logo",
+                { "logo--hover": enableHoverEffect },
+                className
+            )}
+        >
+            CE Tracker
+        </p>
+    );
 }

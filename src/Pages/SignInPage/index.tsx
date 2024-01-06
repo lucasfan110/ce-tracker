@@ -4,6 +4,7 @@ import Tabs, { Tab } from "../../Components/Tabs";
 import LogIn from "./LogIn";
 import SignUp from "./SignUp";
 import "./index.scss";
+import { Link } from "react-router-dom";
 
 export default function SignInPage() {
     const searchParams = new URLSearchParams(
@@ -34,11 +35,13 @@ export default function SignInPage() {
         <main>
             <section className="u-container section-sign-in">
                 <div className="logo-animation">
-                    <Logo enableHoverEffect={false} navigateWhenClick={false} />
+                    <Logo enableHoverEffect={false} />
                 </div>
 
                 <div className="sign-in">
-                    <Logo className="sign-in__logo" />
+                    <Link to="/" className="sign-in__logo-link">
+                        <Logo className="sign-in__logo" />
+                    </Link>
                     <Tabs
                         tabs={tabs}
                         activeTabLabel={activeTab}

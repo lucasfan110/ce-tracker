@@ -2,12 +2,14 @@ $color-white: #fff;
 
 $color-gray-1: #3b506c;
 $color-gray-2: #666666;
+$color-gray-3: #aaaaaa;
 $color-gray-light: #f0f0f0;
 $color-gray-lighter: #f8f8f8;
 
 $color-black: #161c2d;
 
 $color-primary: #00ba69;
+$color-primary-light: lighten($color-primary, 15%);
 $color-primary-dark: #009e59;
 
 $color-secondary: #ba7f00;

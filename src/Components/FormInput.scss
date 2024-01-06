@@ -1,0 +1,12 @@
+.form-input {
+    &__input {
+        margin-top: 0.5rem;
+    }
+
+    &__invalid-message {
+        color: red;
+        font-size: 1.3rem;
+    }
+
+    margin-bottom: 1rem;
+}

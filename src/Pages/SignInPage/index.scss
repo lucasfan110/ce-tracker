@@ -15,6 +15,11 @@
         animation: formZoomInAnimation 1s 1.5s backwards;
         backface-visibility: hidden;
 
+        &__logo-link {
+            text-decoration: none;
+            cursor: pointer;
+        }
+
         &__logo {
             margin-bottom: 2rem;
         }
