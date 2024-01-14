@@ -1,10 +1,12 @@
+@import "../sass/abstracts/variables";
+
 .form-input {
     &__input {
         margin-top: 0.5rem;
     }
 
     &__invalid-message {
-        color: red;
+        color: $color-invalid;
         font-size: 1.3rem;
     }
 

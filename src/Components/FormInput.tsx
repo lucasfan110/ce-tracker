@@ -10,15 +10,11 @@ type Validate = {
 
 interface Props extends React.ComponentPropsWithRef<"input"> {
     label: string;
-    // invalidMessage?: string;
-    // validator?: (value: string) => boolean;
     validate?: Validate | Validate[];
 }
 
 export default function FormInput({
     label,
-    // invalidMessage,
-    // validator,
     className,
     onChange,
     validate,
@@ -36,15 +32,15 @@ export default function FormInput({
             return null;
         }
 
-        let validateArray: Validate[] = [];
+        let validateAsArray: Validate[] = [];
 
         if (!Array.isArray(validate)) {
-            validateArray = [validate];
+            validateAsArray = [validate];
         } else {
-            validateArray = validate;
+            validateAsArray = validate;
         }
 
-        return validateArray.map(v => {
+        return validateAsArray.map(v => {
             if (!v.validator(props.value?.toString() ?? "")) {
                 return (
                     <p
@@ -58,8 +54,6 @@ export default function FormInput({
 
             return null;
         });
-
-        // return <p className="form-input__invalid-message">{invalidMessage}</p>;
     }
 
     return (

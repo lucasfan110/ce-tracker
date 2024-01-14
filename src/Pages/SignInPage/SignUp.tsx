@@ -4,8 +4,9 @@ import Button from "../../Components/Button";
 import FormInput from "../../Components/FormInput";
 import "./SignUp.scss";
 import { useNavigate } from "react-router-dom";
+import { JWT_LOCAL_STORAGE_KEY, SERVER_ADDRESS } from "../../utils/constants";
 
-export type FormData = {
+export type SignUpFormData = {
     firstName: string;
     lastName: string;
     email: string;
@@ -13,7 +14,7 @@ export type FormData = {
     password: string;
 };
 
-const INITIAL_FORM_DATA: FormData = {
+const INITIAL_FORM_DATA: SignUpFormData = {
     firstName: "",
     lastName: "",
     email: "",
@@ -22,7 +23,7 @@ const INITIAL_FORM_DATA: FormData = {
 };
 
 export default function SignUp() {
-    const [formData, setFormData] = useState<FormData>(INITIAL_FORM_DATA);
+    const [formData, setFormData] = useState<SignUpFormData>(INITIAL_FORM_DATA);
     const [confirmPassword, setConfirmPassword] = useState("");
     const [isEmailDuplicate, setIsEmailDuplicate] = useState(false);
     const [isPhoneNumDuplicate, setIsPhoneNumDuplicate] = useState(false);
@@ -31,7 +32,7 @@ export default function SignUp() {
     const handleFormSubmit: FormEventHandler<HTMLFormElement> = async event => {
         event.preventDefault();
 
-        const res = await fetch("http://localhost:8000/api/v1/admins/signup", {
+        const res = await fetch(`${SERVER_ADDRESS}/api/v1/users/signup`, {
             method: "POST",
             headers: {
                 Accept: "application/json",
@@ -41,9 +42,8 @@ export default function SignUp() {
         });
         const json = await res.json();
 
-        console.log(json);
-
         if (json.status === "success") {
+            localStorage.setItem(JWT_LOCAL_STORAGE_KEY, json.token);
             navigate("/dashboard");
         } else if (json.message.includes("email")) {
             setIsEmailDuplicate(true);
