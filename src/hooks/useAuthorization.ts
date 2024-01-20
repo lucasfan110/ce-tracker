@@ -57,7 +57,7 @@ export function useTokenValidation() {
     };
 }
 
-export function useRedirectIfTokenValid(to: string) {
+export function useRedirectIfValidToken(to: string) {
     const navigate = useNavigate();
     const tokenValidation = useTokenValidation();
 

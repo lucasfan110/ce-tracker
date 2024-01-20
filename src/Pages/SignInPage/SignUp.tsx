@@ -1,13 +1,14 @@
 import { FormEventHandler, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import validator from "validator";
 import Button from "../../Components/Button";
-import FormInput from "../../Components/FormInput";
-import "./SignUp.scss";
-import { useNavigate } from "react-router-dom";
-import setJWTToken from "../../utils/setJWTToken";
-import { User } from "../../types/User";
-import { signUp } from "../../utils/signIn";
 import ErrorMessage from "../../Components/ErrorMessage";
+import FormInput from "../../Components/FormInput";
+import { useRedirectIfValidToken } from "../../hooks/useAuthorization";
+import { User } from "../../types/User";
+import setJWTToken from "../../utils/setJWTToken";
+import { signUp } from "../../utils/signIn";
+import "./SignUp.scss";
 
 export type SignUpFormData = User;
 
@@ -26,6 +27,7 @@ export default function SignUp() {
     const [isPhoneNumDuplicate, setIsPhoneNumDuplicate] = useState(false);
     const navigate = useNavigate();
     const [errorMessage, setErrorMessage] = useState("");
+    useRedirectIfValidToken("/dashboard");
 
     const handleFormSubmit: FormEventHandler<HTMLFormElement> = async event => {
         event.preventDefault();
