@@ -14,6 +14,7 @@
     .sign-in {
         animation: formZoomInAnimation 1s 1.5s backwards;
         backface-visibility: hidden;
+        width: 35rem;
 
         &__logo-link {
             text-decoration: none;

@@ -4,15 +4,12 @@ import Button from "../../Components/Button";
 import FormInput from "../../Components/FormInput";
 import "./SignUp.scss";
 import { useNavigate } from "react-router-dom";
-import { JWT_LOCAL_STORAGE_KEY, SERVER_ADDRESS } from "../../utils/constants";
+import setJWTToken from "../../utils/setJWTToken";
+import { User } from "../../types/User";
+import { signUp } from "../../utils/signIn";
+import ErrorMessage from "../../Components/ErrorMessage";
 
-export type SignUpFormData = {
-    firstName: string;
-    lastName: string;
-    email: string;
-    phoneNumber: string;
-    password: string;
-};
+export type SignUpFormData = User;
 
 const INITIAL_FORM_DATA: SignUpFormData = {
     firstName: "",
@@ -28,22 +25,20 @@ export default function SignUp() {
     const [isEmailDuplicate, setIsEmailDuplicate] = useState(false);
     const [isPhoneNumDuplicate, setIsPhoneNumDuplicate] = useState(false);
     const navigate = useNavigate();
+    const [errorMessage, setErrorMessage] = useState("");
 
     const handleFormSubmit: FormEventHandler<HTMLFormElement> = async event => {
         event.preventDefault();
 
-        const res = await fetch(`${SERVER_ADDRESS}/api/v1/users/signup`, {
-            method: "POST",
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(formData),
-        });
-        const json = await res.json();
+        const json = await signUp(JSON.stringify(formData));
+
+        if (!json) {
+            setErrorMessage("Our server is down. Please try again later");
+            return;
+        }
 
         if (json.status === "success") {
-            localStorage.setItem(JWT_LOCAL_STORAGE_KEY, json.token);
+            setJWTToken(json.token);
             navigate("/dashboard");
         } else if (json.message.includes("email")) {
             setIsEmailDuplicate(true);
@@ -62,6 +57,8 @@ export default function SignUp() {
     return (
         <div className="sign-up">
             <form className="sign-up__form" onSubmit={handleFormSubmit}>
+                <ErrorMessage>{errorMessage}</ErrorMessage>
+
                 <FormInput
                     label="First Name"
                     placeholder="First Name"

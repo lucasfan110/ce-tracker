@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import AccountInfo from "../Components/AccountInfo";
 import Logo from "../Components/Logo";
 import "./Navbar.scss";
+import UserAccount from "../Components/UserAccount";
 
 export type Link = {
     name: string;
@@ -36,7 +36,7 @@ export default function Navbar({ links }: Props) {
                 </div>
                 <div className="nav__center">{renderLinks()}</div>
                 <div className="nav__right">
-                    <AccountInfo />
+                    <UserAccount />
                 </div>
             </div>
         </nav>

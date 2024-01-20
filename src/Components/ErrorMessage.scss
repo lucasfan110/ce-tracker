@@ -1,0 +1,7 @@
+@import "../sass/abstracts/variables";
+
+.error-message {
+    color: $color-invalid;
+    font-family: 1.2rem;
+    margin: 1rem 0;
+}

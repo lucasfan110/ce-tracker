@@ -1,13 +1,13 @@
+import { FormEventHandler, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import validator from "validator";
 import Button from "../../Components/Button";
+import ErrorMessage from "../../Components/ErrorMessage";
 import FormInput from "../../Components/FormInput";
+import { useRedirectIfTokenValid } from "../../hooks/useAuthorization";
+import setJWTToken from "../../utils/setJWTToken";
+import { login } from "../../utils/signIn";
 import "./LogIn.scss";
-import { FormEventHandler, useState } from "react";
-import {
-    SERVER_ADDRESS as BACKEND_SERVER_ADDRESS,
-    JWT_LOCAL_STORAGE_KEY,
-} from "../../utils/constants";
-import { useNavigate } from "react-router-dom";
 
 export type LogInFormData = {
     email: string;
@@ -23,39 +23,31 @@ export default function LogIn() {
     const [formData, setFormData] = useState(INITIAL_FORM_DATA);
     const [loginFailed, setLoginFailed] = useState(false);
     const navigate = useNavigate();
+    const [errorMessage, setErrorMessage] = useState("");
+    useRedirectIfTokenValid("/dashboard");
 
     const handleFormSubmit: FormEventHandler<HTMLFormElement> = async event => {
         event.preventDefault();
 
-        const res = await fetch(
-            `${BACKEND_SERVER_ADDRESS}/api/v1/users/login`,
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(formData),
-            }
-        );
-
-        const json = await res.json();
+        const json = await login(JSON.stringify(formData));
+        if (!json) {
+            setErrorMessage("Our server is down. Please try again later");
+            return;
+        }
 
         if (json.status === "success") {
-            localStorage.setItem(JWT_LOCAL_STORAGE_KEY, json.token);
+            // if status is success then there must be a token
+            setJWTToken(json.token);
             navigate("/dashboard");
         } else {
-            setLoginFailed(true);
+            setErrorMessage("Email or password incorrect!");
         }
     };
 
     return (
         <div className="log-in">
             <form className="log-in__form" onSubmit={handleFormSubmit}>
-                {loginFailed && (
-                    <p className="log-in__login-failed">
-                        Email or password incorrect!
-                    </p>
-                )}
+                <ErrorMessage>{errorMessage}</ErrorMessage>
 
                 <FormInput
                     label="Email"

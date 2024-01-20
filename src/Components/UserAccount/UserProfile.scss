@@ -1,0 +1,19 @@
+@import "../../sass/abstracts/variables";
+
+.user-profile {
+    &__profile-picture {
+        background-color: $color-gray-3;
+        width: 5rem;
+        height: 5rem;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+
+        &:active {
+            color: inherit;
+        }
+    }
+}

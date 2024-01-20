@@ -13,6 +13,7 @@
         border-bottom: 1px solid $color-gray-light;
         padding: 1rem 5rem;
         cursor: pointer;
+        flex-grow: 1;
 
         &--active {
             cursor: default;
