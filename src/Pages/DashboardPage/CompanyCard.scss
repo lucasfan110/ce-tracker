@@ -1,0 +1,83 @@
+@import "../../sass/abstracts/variables";
+
+.company-card {
+    width: min(90vw, 100rem);
+    // background-color: $color-primary-light;
+    height: 25rem;
+    border-radius: 0.6rem;
+    overflow: hidden;
+    box-shadow: 0 0.4rem 1.2rem rgba($color-black, 0.2);
+    display: flex;
+    box-sizing: border-box;
+
+    margin: 2rem auto;
+
+    &__thumbnail-container {
+        width: 20rem;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    &__thumbnail {
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+        transform: translateX(-25%);
+        border-top-left-radius: 0.6rem;
+        border-bottom-left-radius: 0.6rem;
+    }
+
+    &__content {
+        padding: 2rem 2rem;
+        width: 80rem;
+        box-sizing: border-box;
+    }
+
+    &__name {
+        font-weight: normal;
+    }
+
+    &__location {
+        font-size: 1.2rem;
+        color: $color-gray-3;
+    }
+
+    &__contact-info {
+        display: flex;
+        margin-top: 1rem;
+        gap: 5rem;
+        color: $color-gray-2;
+        font-size: 1.4rem;
+    }
+
+    &__email {
+        i::before {
+            transform: translateY(2px);
+        }
+    }
+
+    &__summary {
+        font-size: 1.3rem;
+        margin-top: 1rem;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        min-height: 7rem;
+    }
+
+    &__tags {
+        margin-top: 2rem;
+        display: flex;
+        gap: 1rem;
+    }
+
+    &__tag {
+        background-color: $color-primary-light;
+        padding: 6px 12px;
+        border-radius: 4rem;
+        font-size: 1.3rem;
+        line-height: 1.2;
+        color: $color-gray-1;
+    }
+}

@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
+import { APIErrorResponse } from "../types/APIErrorResponse";
+import { User } from "../types/User";
 import {
     BACKEND_SERVER_ADDRESS,
     JWT_LOCAL_STORAGE_KEY,
 } from "../utils/constants";
-import { useNavigate } from "react-router-dom";
-import { User } from "../types/User";
-import { APIErrorResponse } from "../types/APIErrorResponse";
 
 export type ValidationStatus = "validating" | "fail" | "success";
 export type GetUserResult =
@@ -69,23 +68,4 @@ export function useJWTValidation() {
         status,
         user,
     };
-}
-
-export function useRedirectIfValidToken(to: string) {
-    const navigate = useNavigate();
-    const jwtValidation = useJWTValidation();
-
-    useEffect(() => {
-        switch (jwtValidation.status) {
-            // There is already a valid token. No need to log in again. Redirect to dashboard
-            case "success":
-                navigate(to);
-                break;
-            // if token is validating then wait
-            // or if there is no already valid token, then do nothing and let user login
-            case "validating":
-            case "fail":
-                return;
-        }
-    }, [jwtValidation, navigate, to]);
 }

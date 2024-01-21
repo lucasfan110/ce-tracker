@@ -1,17 +1,10 @@
+import { Company } from "../../types/Company";
 import "./CompanyCard.scss";
 
-interface Props {
-    name: string;
-    type: string[];
-    location: string;
-    phoneNumber: string;
-    email: string;
-    resources: string[];
-    image: string;
-    summary: string;
-}
+interface Props extends Company {}
 
 export default function CompanyCard({
+    _id,
     name,
     type,
     location,
@@ -19,7 +12,7 @@ export default function CompanyCard({
     email,
     resources,
     image,
-    summary,
+    description,
 }: Props) {
     function renderTags() {
         return type.map(t => (
@@ -53,7 +46,7 @@ export default function CompanyCard({
                         {email}
                     </div>
                 </div>
-                <div className="company-card__summary">{summary}</div>
+                <div className="company-card__summary">{description}</div>
                 <div className="company-card__tags">{renderTags()}</div>
             </div>
         </div>
