@@ -13,7 +13,7 @@ type ValidationResult = {
 
 export type ValidationStatus = "validating" | "fail" | "success";
 
-export function useTokenValidation() {
+export function useJWTValidation() {
     const [status, setStatus] = useState<ValidationStatus>("validating");
 
     useEffect(() => {
@@ -59,10 +59,10 @@ export function useTokenValidation() {
 
 export function useRedirectIfValidToken(to: string) {
     const navigate = useNavigate();
-    const tokenValidation = useTokenValidation();
+    const jwtValidation = useJWTValidation();
 
     useEffect(() => {
-        switch (tokenValidation.status) {
+        switch (jwtValidation.status) {
             // There is already a valid token. No need to log in again. Redirect to dashboard
             case "success":
                 navigate(to);
@@ -73,5 +73,5 @@ export function useRedirectIfValidToken(to: string) {
             case "fail":
                 return;
         }
-    }, [tokenValidation, navigate, to]);
+    }, [jwtValidation, navigate, to]);
 }

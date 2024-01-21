@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./AuthorizeUser.scss";
-import { useTokenValidation } from "../hooks/useAuthorization";
+import { useJWTValidation } from "../hooks/useAuthorization";
 
 interface Props {
     children?: React.ReactNode;
@@ -10,10 +10,10 @@ interface Props {
 export default function AuthorizeUser({ children }: Props) {
     const navigate = useNavigate();
     const [message, setMessage] = useState("Validating...");
-    const tokenValidation = useTokenValidation();
+    const jwtValidation = useJWTValidation();
 
     useEffect(() => {
-        if (tokenValidation.status === "fail") {
+        if (jwtValidation.status === "fail") {
             setTimeout(() => {
                 navigate("/");
             }, 3000);
@@ -22,9 +22,9 @@ export default function AuthorizeUser({ children }: Props) {
                 "Authorization failed. Please log in again. You will be redirected in a moment..."
             );
         }
-    }, [navigate, tokenValidation]);
+    }, [navigate, jwtValidation]);
 
-    if (tokenValidation.status === "fail") {
+    if (jwtValidation.status === "fail") {
         return <div className="authorize-user">{message}</div>;
     }
 
