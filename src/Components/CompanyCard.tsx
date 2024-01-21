@@ -7,7 +7,7 @@ interface Props {
     phoneNumber: string;
     email: string;
     resources: string[];
-    thumbnail: string;
+    image: string;
     summary: string;
 }
 
@@ -18,7 +18,7 @@ export default function CompanyCard({
     phoneNumber,
     email,
     resources,
-    thumbnail,
+    image,
     summary,
 }: Props) {
     function renderTags() {
@@ -33,7 +33,7 @@ export default function CompanyCard({
         <div className="company-card">
             <div className="company-card__thumbnail-container">
                 <img
-                    src={thumbnail}
+                    src={image}
                     alt="thumbnail"
                     className="company-card__thumbnail"
                 />

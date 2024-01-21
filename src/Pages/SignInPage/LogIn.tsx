@@ -4,7 +4,6 @@ import validator from "validator";
 import Button from "../../Components/Button";
 import ErrorMessage from "../../Components/ErrorMessage";
 import FormInput from "../../Components/FormInput";
-import { useRedirectIfValidToken } from "../../hooks/useAuthorization";
 import setJWTToken from "../../utils/setJWTToken";
 import { login } from "../../utils/signIn";
 import "./LogIn.scss";
@@ -24,7 +23,6 @@ export default function LogIn() {
     const [loginFailed, setLoginFailed] = useState(false);
     const navigate = useNavigate();
     const [errorMessage, setErrorMessage] = useState("");
-    useRedirectIfValidToken("/dashboard");
 
     const handleFormSubmit: FormEventHandler<HTMLFormElement> = async event => {
         event.preventDefault();

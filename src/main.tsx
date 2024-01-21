@@ -8,10 +8,12 @@ import {
 } from "react-router-dom";
 import "./index.scss";
 import AppIntroLayout from "./Layouts/AppIntroLayout";
+import DashboardPage from "./Pages/DashboardPage";
+import { dashboardLoader } from "./Pages/DashboardPage/dashboardLoader";
 import IndexPage from "./Pages/IndexPage";
 import SignInPage from "./Pages/SignInPage";
-import DashboardPage from "./Pages/DashboardPage";
-import AuthorizeUser from "./Components/AuthorizeUser";
+import ServerDownPage from "./Pages/ServerDownPage";
+import { checkIsSignedIn } from "./Pages/SignInPage/checkIsSignedIn";
 
 const router = createHashRouter(
     createRoutesFromElements(
@@ -19,14 +21,16 @@ const router = createHashRouter(
             <Route path="/" element={<AppIntroLayout />}>
                 <Route index element={<IndexPage />}></Route>
             </Route>
-            <Route path="/sign-in" element={<SignInPage />} />
             <Route
+                loader={checkIsSignedIn}
+                path="/sign-in"
+                element={<SignInPage />}
+            />
+            <Route path="/server-down" element={<ServerDownPage />} />
+            <Route
+                loader={dashboardLoader}
                 path="/dashboard"
-                element={
-                    <AuthorizeUser>
-                        <DashboardPage />
-                    </AuthorizeUser>
-                }
+                element={<DashboardPage />}
             />
         </>
     )

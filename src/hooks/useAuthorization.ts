@@ -3,18 +3,40 @@ import {
     BACKEND_SERVER_ADDRESS,
     JWT_LOCAL_STORAGE_KEY,
 } from "../utils/constants";
-import Status from "../utils/Status";
 import { useNavigate } from "react-router-dom";
-
-type ValidationResult = {
-    status: Status;
-    message: string;
-};
+import { User } from "../types/User";
+import { APIErrorResponse } from "../types/APIErrorResponse";
 
 export type ValidationStatus = "validating" | "fail" | "success";
+export type GetUserResult =
+    | {
+          status: "success";
+          user: User;
+      }
+    | APIErrorResponse;
+
+export async function getUserFromToken(
+    token: string
+): Promise<GetUserResult | null> {
+    try {
+        const res = await fetch(
+            `${BACKEND_SERVER_ADDRESS}/api/v1/users/get-user-from-token`,
+            {
+                method: "GET",
+                headers: {
+                    Authorization: token,
+                },
+            }
+        );
+        return res.json();
+    } catch {
+        return null;
+    }
+}
 
 export function useJWTValidation() {
     const [status, setStatus] = useState<ValidationStatus>("validating");
+    const [user, setUser] = useState<User | null>(null);
 
     useEffect(() => {
         // Validate the token
@@ -26,25 +48,16 @@ export function useJWTValidation() {
         }
 
         (async () => {
-            let json: ValidationResult;
-            try {
-                const res = await fetch(
-                    `${BACKEND_SERVER_ADDRESS}/api/v1/users/validate-token`,
-                    {
-                        method: "POST",
-                        headers: {
-                            Authorization: token,
-                        },
-                    }
-                );
-                json = await res.json();
-            } catch (error) {
+            const json = await getUserFromToken(token);
+
+            if (!json) {
                 setStatus("fail");
                 return;
             }
 
             if (json.status === "success") {
                 setStatus("success");
+                setUser(json.user);
             } else {
                 setStatus("fail");
                 localStorage.removeItem(JWT_LOCAL_STORAGE_KEY);
@@ -54,6 +67,7 @@ export function useJWTValidation() {
 
     return {
         status,
+        user,
     };
 }
 

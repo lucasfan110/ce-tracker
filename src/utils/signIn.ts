@@ -1,17 +1,13 @@
+import { APIErrorResponse } from "../types/APIErrorResponse";
 import { User } from "../types/User";
 import { BACKEND_SERVER_ADDRESS } from "./constants";
-
-export type ErrorResult = {
-    status: "fail" | "error";
-    message: string;
-};
 
 export type LoginResult =
     | {
           status: "success";
           token: string;
       }
-    | ErrorResult;
+    | APIErrorResponse;
 
 export type SignupResult =
     | {
@@ -21,7 +17,7 @@ export type SignupResult =
               user: User;
           };
       }
-    | ErrorResult;
+    | APIErrorResponse;
 
 export async function login(body: string): Promise<LoginResult | null> {
     try {
