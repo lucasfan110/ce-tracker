@@ -1,14 +1,16 @@
 import classNames from "classnames";
 import { ChangeEventHandler, useState } from "react";
 import "./FormInput.scss";
-import Input from "./Input";
+import Input, { InputProps } from "./Input";
 
 type Validate = {
     validator: (value: string) => boolean;
     invalidMessage: string;
 };
 
-interface Props extends React.ComponentPropsWithRef<"input"> {
+// type InputProps = ComponentPropsWithRef<"input">;
+
+export interface FormInputProps extends InputProps {
     label: string;
     validate?: Validate | Validate[];
 }
@@ -19,7 +21,7 @@ export default function FormInput({
     onChange,
     validate,
     ...props
-}: Props) {
+}: FormInputProps) {
     const [changed, setChanged] = useState(false);
 
     const handleInputChange: ChangeEventHandler<HTMLInputElement> = event => {

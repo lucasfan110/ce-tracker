@@ -1,0 +1,34 @@
+@import "../sass/abstracts/variables";
+@import "../sass/base/animations";
+
+.tag-input {
+    &__tags {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    &__tag {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $color-primary-light;
+        padding: 4px 1rem;
+        border-radius: 4rem;
+        display: inline-block;
+
+        animation: tagZoomInAnimation 0.3s ease-in-out;
+    }
+
+    &__tag-delete {
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        transition: 0.2s;
+
+        &:hover {
+            color: $color-gray-2;
+        }
+    }
+}

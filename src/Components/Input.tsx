@@ -1,8 +1,8 @@
 import classNames from "classnames";
 import "./Input.scss";
 
-interface Props extends React.ComponentPropsWithRef<"input"> {}
+export interface InputProps extends React.ComponentProps<"input"> {}
 
-export default function Input({ className, ...props }: Props) {
+export default function Input({ className, ...props }: InputProps) {
     return <input className={classNames("input", className)} {...props} />;
 }

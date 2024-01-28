@@ -1,3 +1,4 @@
+import LinkButton from "../../Components/LinkButton";
 import { Company } from "../../types/Company";
 import "./CompanyCard.scss";
 
@@ -32,7 +33,25 @@ export default function CompanyCard({
                 />
             </div>
             <div className="company-card__content">
-                <h3 className="company-card__name">{name}</h3>
+                <div className="company-card__space-between">
+                    <h3 className="company-card__name">{name}</h3>
+
+                    <div className="company-card__icon-buttons">
+                        <LinkButton
+                            to={`/dashboard/edit-company/${_id}`}
+                            className="company-card__icon-button"
+                        >
+                            <i className="bi bi-pencil-square"></i>
+                        </LinkButton>
+                        <LinkButton
+                            className="company-card__icon-button"
+                            variation="danger"
+                            to={`/dashboard/delete-company/${_id}`}
+                        >
+                            <i className="bi bi-trash3"></i>
+                        </LinkButton>
+                    </div>
+                </div>
                 <div className="company-card__location">{location}</div>
                 <div className="company-card__contact-info">
                     <div className="company-card__phone-number">

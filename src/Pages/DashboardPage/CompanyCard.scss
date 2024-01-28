@@ -80,4 +80,19 @@
         line-height: 1.2;
         color: $color-gray-1;
     }
+
+    &__space-between {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__icon-buttons {
+        display: flex;
+        gap: 1rem;
+    }
+
+    &__icon-button {
+        font-size: 1.4rem;
+        padding: 8px;
+    }
 }

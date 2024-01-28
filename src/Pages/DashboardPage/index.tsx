@@ -1,13 +1,17 @@
 import { useLoaderData } from "react-router-typesafe";
-import { dashboardLoader } from "./dashboardLoader";
+import { userAndCompaniesLoader } from "./userAndCompaniesLoader";
 import DisplayCompanies from "./DisplayCompanies";
+import LinkButton from "../../Components/LinkButton";
 
 export default function DashboardPage() {
-    const { user, companies } = useLoaderData<typeof dashboardLoader>();
+    const { companies } = useLoaderData<typeof userAndCompaniesLoader>();
 
     return (
         <main>
             <DisplayCompanies companies={companies} />
+            <LinkButton to="/dashboard/add-company" variation="primary">
+                Add
+            </LinkButton>
         </main>
     );
 }

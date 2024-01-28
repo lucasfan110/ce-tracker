@@ -9,11 +9,17 @@ import {
 import "./index.scss";
 import AppIntroLayout from "./Layouts/AppIntroLayout";
 import DashboardPage from "./Pages/DashboardPage";
-import { dashboardLoader } from "./Pages/DashboardPage/dashboardLoader";
+import AddCompany from "./Pages/DashboardPage/AddCompany";
+import {
+    userAndCompaniesLoader,
+    userAndCompanyLoader,
+} from "./Pages/DashboardPage/userAndCompaniesLoader";
 import IndexPage from "./Pages/IndexPage";
-import SignInPage from "./Pages/SignInPage";
 import ServerDownPage from "./Pages/ServerDownPage";
+import SignInPage from "./Pages/SignInPage";
 import { checkIsSignedIn } from "./Pages/SignInPage/checkIsSignedIn";
+import EditCompany from "./Pages/DashboardPage/EditCompany";
+import DeleteCompany from "./Pages/DashboardPage/DeleteCompany";
 
 const router = createHashRouter(
     createRoutesFromElements(
@@ -27,11 +33,28 @@ const router = createHashRouter(
                 element={<SignInPage />}
             />
             <Route path="/server-down" element={<ServerDownPage />} />
-            <Route
-                loader={dashboardLoader}
-                path="/dashboard"
-                element={<DashboardPage />}
-            />
+            <Route path="/dashboard">
+                <Route
+                    index
+                    loader={userAndCompaniesLoader}
+                    element={<DashboardPage />}
+                />
+                <Route
+                    loader={userAndCompaniesLoader}
+                    path="add-company/"
+                    element={<AddCompany />}
+                />
+                <Route
+                    loader={userAndCompanyLoader}
+                    path="edit-company/:companyId"
+                    element={<EditCompany />}
+                />
+                <Route
+                    loader={userAndCompanyLoader}
+                    path="delete-company/:companyId"
+                    element={<DeleteCompany />}
+                />
+            </Route>
         </>
     )
 );
