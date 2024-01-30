@@ -1,6 +1,10 @@
+import { useState } from "react";
 import LinkButton from "../../Components/LinkButton";
 import { Company } from "../../types/Company";
 import "./CompanyCard.scss";
+
+const DEFAULT_IMAGE_SOURCE =
+    "https://www.invoicera.com/wp-content/uploads/2023/11/default-image.jpg";
 
 interface Props extends Company {}
 
@@ -15,6 +19,9 @@ export default function CompanyCard({
     image,
     description,
 }: Props) {
+    // Change image source if it fails to load
+    const [imageSrc, setImageSrc] = useState(image || DEFAULT_IMAGE_SOURCE);
+
     function renderTags() {
         return type.map(t => (
             <div className="company-card__tag" key={t}>
@@ -23,11 +30,16 @@ export default function CompanyCard({
         ));
     }
 
+    function loadDefaultThumbnail() {
+        setImageSrc(DEFAULT_IMAGE_SOURCE);
+    }
+
     return (
         <div className="company-card">
             <div className="company-card__thumbnail-container">
                 <img
-                    src={image}
+                    src={imageSrc}
+                    onError={loadDefaultThumbnail}
                     alt="thumbnail"
                     className="company-card__thumbnail"
                 />
