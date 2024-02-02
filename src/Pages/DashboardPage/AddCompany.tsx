@@ -1,14 +1,16 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useLoaderData } from "react-router-typesafe";
 import validator from "validator";
 import Button from "../../Components/Button";
+import ErrorMessage from "../../Components/ErrorMessage";
 import FormInput from "../../Components/FormInput";
 import TagInput from "../../Components/TagInput";
 import { Company } from "../../types/Company";
+import "./AddCompany.scss";
 import CompanyEndpoint from "./CompanyEndpint";
 import { userAndCompaniesLoader } from "./userAndCompaniesLoader";
-import ErrorMessage from "../../Components/ErrorMessage";
-import { useNavigate } from "react-router-dom";
+import LinkButton from "../../Components/LinkButton";
 
 type AddCompanyFormData = Omit<Company, "_id">;
 
@@ -46,8 +48,9 @@ export default function AddCompany() {
 
     return (
         <div className="add-company">
-            <form onSubmit={handleFormSubmit}>
+            <form onSubmit={handleFormSubmit} className="add-company__form">
                 <ErrorMessage>{errorMessage}</ErrorMessage>
+
                 {/* A default submit button to prevent submitting when user press enter when typing on input due to the tag input */}
                 <button
                     type="submit"
@@ -55,6 +58,7 @@ export default function AddCompany() {
                     style={{ display: "none" }}
                     aria-hidden="true"
                 ></button>
+
                 <FormInput
                     label="Name"
                     placeholder="Name"
@@ -72,7 +76,9 @@ export default function AddCompany() {
                             name: e.target.value,
                         }));
                     }}
+                    className="add-company__input"
                 />
+
                 <FormInput
                     label="Company Email"
                     type="email"
@@ -90,7 +96,9 @@ export default function AddCompany() {
                         validator: validator.isEmail,
                         invalidMessage: "Please put in a valid email",
                     }}
+                    className="add-company__input"
                 />
+
                 <FormInput
                     label="Phone Number"
                     placeholder="Phone Number"
@@ -109,9 +117,11 @@ export default function AddCompany() {
                             phoneNumber: e.target.value,
                         }));
                     }}
+                    className="add-company__input"
                 />
-                <label htmlFor="tags">Company Tags</label>
+
                 <div>
+                    <label htmlFor="tags">Company Tags</label>
                     <TagInput
                         id="tags"
                         placeholder="Add Tag"
@@ -122,8 +132,10 @@ export default function AddCompany() {
                                 type: tags,
                             }));
                         }}
+                        className="add-company__input"
                     />
                 </div>
+
                 <FormInput
                     label="Company Image Url"
                     placeholder="Company Image Url"
@@ -135,7 +147,9 @@ export default function AddCompany() {
                             image: e.target.value,
                         }));
                     }}
+                    className="add-company__input"
                 />
+
                 <FormInput
                     label="Description"
                     placeholder="Description"
@@ -147,7 +161,9 @@ export default function AddCompany() {
                             description: e.target.value,
                         }));
                     }}
+                    className="add-company__input"
                 />
+
                 <FormInput
                     label="Location"
                     placeholder="Location"
@@ -159,7 +175,9 @@ export default function AddCompany() {
                             location: e.target.value,
                         }));
                     }}
+                    className="add-company__input"
                 />
+
                 <FormInput
                     label="Resources"
                     placeholder="Resources"
@@ -171,8 +189,19 @@ export default function AddCompany() {
                             resources: [e.target.value],
                         }));
                     }}
+                    className="add-company__input"
                 />
-                <Button variation="primary">Submit</Button>
+
+                <Button variation="primary" className="add-company__button">
+                    Submit
+                </Button>
+                <LinkButton
+                    variation="secondary"
+                    to="/dashboard"
+                    className="add-company__button"
+                >
+                    Cancel
+                </LinkButton>
             </form>
         </div>
     );

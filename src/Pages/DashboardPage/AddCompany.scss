@@ -1,0 +1,21 @@
+.add-company {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+
+    &__form {
+        width: 30rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__input {
+        width: 100%;
+    }
+
+    &__button {
+        margin-top: 2rem;
+        width: 100%;
+    }
+}
