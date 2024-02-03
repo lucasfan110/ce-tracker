@@ -1,3 +1,9 @@
+.dashboard-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .add-company-button {
     position: fixed;
     bottom: 15rem;

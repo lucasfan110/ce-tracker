@@ -9,8 +9,13 @@
     box-shadow: 0 0.4rem 1.2rem rgba($color-black, 0.2);
     display: flex;
     box-sizing: border-box;
+    cursor: pointer;
+    margin: 2rem 0;
+    transition: 0.2s all ease-in-out;
 
-    margin: 2rem auto;
+    &:hover {
+        transform: scale(1.01);
+    }
 
     &__thumbnail-container {
         overflow: hidden;
@@ -70,24 +75,13 @@
         min-height: 7rem;
     }
 
-    &__tags {
-        margin-top: 2rem;
-        display: flex;
-        gap: 1rem;
-    }
-
-    &__tag {
-        background-color: $color-primary-light;
-        padding: 6px 12px;
-        border-radius: 4rem;
-        font-size: 1.3rem;
-        line-height: 1.2;
-        color: $color-gray-1;
-    }
-
     &__space-between {
         display: flex;
         justify-content: space-between;
+    }
+
+    &__tags {
+        margin-top: 1rem;
     }
 
     &__icon-buttons {

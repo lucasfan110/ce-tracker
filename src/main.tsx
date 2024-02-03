@@ -8,8 +8,12 @@ import {
 } from "react-router-dom";
 import "./index.scss";
 import AppIntroLayout from "./Layouts/AppIntroLayout";
+import DashboardLayout from "./Layouts/DashboardLayout";
 import DashboardPage from "./Pages/DashboardPage";
 import AddCompany from "./Pages/DashboardPage/AddCompany";
+import CompanyDetail from "./Pages/DashboardPage/CompanyDetail";
+import DeleteCompany from "./Pages/DashboardPage/DeleteCompany";
+import EditCompany from "./Pages/DashboardPage/EditCompany";
 import {
     userAndCompaniesLoader,
     userAndCompanyLoader,
@@ -18,8 +22,6 @@ import IndexPage from "./Pages/IndexPage";
 import ServerDownPage from "./Pages/ServerDownPage";
 import SignInPage from "./Pages/SignInPage";
 import { checkIsSignedIn } from "./Pages/SignInPage/checkIsSignedIn";
-import EditCompany from "./Pages/DashboardPage/EditCompany";
-import DeleteCompany from "./Pages/DashboardPage/DeleteCompany";
 
 const router = createHashRouter(
     createRoutesFromElements(
@@ -33,7 +35,7 @@ const router = createHashRouter(
                 element={<SignInPage />}
             />
             <Route path="/server-down" element={<ServerDownPage />} />
-            <Route path="/dashboard">
+            <Route path="/dashboard" element={<DashboardLayout />}>
                 <Route
                     index
                     loader={userAndCompaniesLoader}
@@ -53,6 +55,11 @@ const router = createHashRouter(
                     loader={userAndCompanyLoader}
                     path="delete-company/:companyId"
                     element={<DeleteCompany />}
+                />
+                <Route
+                    loader={userAndCompanyLoader}
+                    path="company/:companyId"
+                    element={<CompanyDetail />}
                 />
             </Route>
         </>

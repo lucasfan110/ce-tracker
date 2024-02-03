@@ -1,10 +1,9 @@
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import LinkButton from "../../Components/LinkButton";
 import { Company } from "../../types/Company";
 import "./CompanyCard.scss";
-
-const DEFAULT_IMAGE_SOURCE =
-    "https://www.invoicera.com/wp-content/uploads/2023/11/default-image.jpg";
+import ImageOrDefault from "../../Components/ImageOrDefault";
+import Tags from "../../Components/Tags";
 
 interface Props extends Company {}
 
@@ -15,31 +14,21 @@ export default function CompanyCard({
     location,
     phoneNumber,
     email,
-    resources,
+    // resources,
     image,
     description,
 }: Props) {
-    // Change image source if it fails to load
-    const [imageSrc, setImageSrc] = useState(image || DEFAULT_IMAGE_SOURCE);
+    const navigate = useNavigate();
 
-    function renderTags() {
-        return type.map(t => (
-            <div className="company-card__tag" key={t}>
-                {t}
-            </div>
-        ));
-    }
-
-    function loadDefaultThumbnail() {
-        setImageSrc(DEFAULT_IMAGE_SOURCE);
+    function handleCompanyCardClick() {
+        navigate(`/dashboard/company/${_id}`);
     }
 
     return (
-        <div className="company-card">
+        <div className="company-card" onClick={handleCompanyCardClick}>
             <div className="company-card__thumbnail-container">
-                <img
-                    src={imageSrc}
-                    onError={loadDefaultThumbnail}
+                <ImageOrDefault
+                    src={image}
                     alt="thumbnail"
                     className="company-card__thumbnail"
                 />
@@ -52,6 +41,7 @@ export default function CompanyCard({
                         <LinkButton
                             to={`/dashboard/edit-company/${_id}`}
                             className="company-card__icon-button"
+                            onClick={e => e.stopPropagation()}
                         >
                             <i className="bi bi-pencil-square"></i>
                         </LinkButton>
@@ -59,6 +49,7 @@ export default function CompanyCard({
                             className="company-card__icon-button"
                             variation="danger"
                             to={`/dashboard/delete-company/${_id}`}
+                            onClick={e => e.stopPropagation()}
                         >
                             <i className="bi bi-trash3"></i>
                         </LinkButton>
@@ -78,7 +69,9 @@ export default function CompanyCard({
                     </div>
                 </div>
                 <div className="company-card__summary">{description}</div>
-                <div className="company-card__tags">{renderTags()}</div>
+                <div className="company-card__tags">
+                    <Tags tags={type} />
+                </div>
             </div>
         </div>
     );

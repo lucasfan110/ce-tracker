@@ -3,12 +3,15 @@ import LinkButton from "../../Components/LinkButton";
 import DisplayCompanies from "./DisplayCompanies";
 import "./index.scss";
 import { userAndCompaniesLoader } from "./userAndCompaniesLoader";
+import Input from "../../Components/Input";
 
 export default function DashboardPage() {
-    const { companies } = useLoaderData<typeof userAndCompaniesLoader>();
+    const { companies, user } = useLoaderData<typeof userAndCompaniesLoader>();
 
     return (
-        <main>
+        <main className="dashboard-page">
+            Hi, {user.firstName}
+            <Input />
             <DisplayCompanies companies={companies} />
             <LinkButton
                 to="/dashboard/add-company"

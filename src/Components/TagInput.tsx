@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Input, { InputProps } from "./Input";
 import "./TagInput.scss";
+import Tags from "./Tags";
 
 interface Props extends InputProps {
     tags: string[];
@@ -9,25 +10,6 @@ interface Props extends InputProps {
 
 export default function TagInput({ tags, onTagsChange, ...props }: Props) {
     const [inputValue, setInputValue] = useState("");
-
-    // Rendering the tags
-    function renderTags() {
-        return tags.map(tag => {
-            return (
-                <span key={tag} className="tag-input__tag">
-                    {tag}
-                    <button
-                        onClick={() => removeTag(tag)}
-                        type="button"
-                        className="tag-input__tag-delete"
-                    >
-                        {/* The `X` icon for deleting tags */}
-                        <i className="bi bi-x"></i>
-                    </button>
-                </span>
-            );
-        });
-    }
 
     // Adds a tag to the tags array, based on what's inside the input
     function addTag() {
@@ -79,7 +61,19 @@ export default function TagInput({ tags, onTagsChange, ...props }: Props) {
 
     return (
         <div className="tag-input">
-            <span className="tag-input__tags">{renderTags()}</span>
+            <Tags
+                tags={tags}
+                extraTagContentRender={tag => (
+                    <button
+                        onClick={() => removeTag(tag)}
+                        type="button"
+                        className="tag-input__tag-delete"
+                    >
+                        {/* The `X` icon for deleting tags */}
+                        <i className="bi bi-x"></i>
+                    </button>
+                )}
+            />
             <Input
                 value={inputValue}
                 onChange={e => setInputValue(e.target.value)}

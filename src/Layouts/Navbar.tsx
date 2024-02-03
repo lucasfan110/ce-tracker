@@ -11,9 +11,10 @@ export type Link = {
 
 interface Props {
     links: Link[];
+    iconGoTo?: string;
 }
 
-export default function Navbar({ links }: Props) {
+export default function Navbar({ links, iconGoTo = "/" }: Props) {
     function renderLinks() {
         return links.map(link => {
             return (
@@ -30,7 +31,7 @@ export default function Navbar({ links }: Props) {
         <nav className="nav">
             <div className="nav__container">
                 <div className="nav__left">
-                    <Link to="/" className="nav__logo">
+                    <Link to={iconGoTo} className="nav__logo">
                         <Logo />
                     </Link>
                 </div>

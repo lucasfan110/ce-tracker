@@ -47,7 +47,7 @@ export async function signUp(body: string): Promise<SignupResult | null> {
                     Accept: "application/json",
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(body),
+                body,
             }
         );
         return res.json();

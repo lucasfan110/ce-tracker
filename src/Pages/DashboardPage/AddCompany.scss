@@ -1,3 +1,5 @@
+@import "../../sass/abstracts/variables";
+
 .add-company {
     display: flex;
     align-items: center;
@@ -5,13 +7,14 @@
     height: 100vh;
 
     &__form {
-        width: 30rem;
+        width: 35rem;
         display: flex;
         flex-direction: column;
     }
 
     &__input {
         width: 100%;
+        box-shadow: 0 5px 1rem $color-box-shadow-light;
     }
 
     &__button {

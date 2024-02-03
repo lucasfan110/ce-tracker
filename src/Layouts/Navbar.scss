@@ -2,30 +2,44 @@
 @import "../sass/abstracts/variables";
 
 .nav {
-	margin: 1rem 0;
+    margin: 1rem 0;
 
-	&__container {
-		@include container;
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-	}
+    &__container {
+        @include container;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 
-	&__left {
-		overflow: auto;
-	}
+    &__left {
+        overflow: auto;
+        display: flex;
+        justify-content: flex-start;
+    }
 
-	&__logo {
-		text-decoration: none;
-	}
+    &__right {
+        display: flex;
+        justify-content: flex-end;
+    }
 
-	&__center {
-		gap: 3rem;
-		display: flex;
-	}
+    &__left,
+    &__right {
+        flex: 1;
+    }
 
-	&__link {
-		text-decoration: none;
-		color: $color-gray-2;
-	}
+    &__logo {
+        text-decoration: none;
+    }
+
+    &__center {
+        gap: 3rem;
+        display: flex;
+        justify-content: center;
+        flex: 1;
+    }
+
+    &__link {
+        text-decoration: none;
+        color: $color-gray-2;
+    }
 }

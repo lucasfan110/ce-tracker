@@ -11,6 +11,8 @@ import "./AddCompany.scss";
 import CompanyEndpoint from "./CompanyEndpint";
 import { userAndCompaniesLoader } from "./userAndCompaniesLoader";
 import LinkButton from "../../Components/LinkButton";
+import Input from "../../Components/Input";
+import TextArea from "../../Components/TextArea";
 
 type AddCompanyFormData = Omit<Company, "_id">;
 
@@ -150,7 +152,7 @@ export default function AddCompany() {
                     className="add-company__input"
                 />
 
-                <FormInput
+                {/* <FormInput
                     label="Description"
                     placeholder="Description"
                     id="description"
@@ -162,7 +164,23 @@ export default function AddCompany() {
                         }));
                     }}
                     className="add-company__input"
-                />
+                /> */}
+                <div>
+                    <label htmlFor="description">Description</label>
+                    <TextArea
+                        id="description"
+                        placeholder="Description"
+                        value={formData.description}
+                        onChange={e => {
+                            setFormData(data => ({
+                                ...data,
+                                description: e.target.value,
+                            }));
+                        }}
+                        className="add-company__input"
+                        rows={10}
+                    />
+                </div>
 
                 <FormInput
                     label="Location"
@@ -193,7 +211,7 @@ export default function AddCompany() {
                 />
 
                 <Button variation="primary" className="add-company__button">
-                    Submit
+                    Add
                 </Button>
                 <LinkButton
                     variation="secondary"
