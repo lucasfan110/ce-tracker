@@ -143,14 +143,14 @@ export default function EditCompany() {
                 />
 
                 <FormInput
-                    label="Description"
-                    placeholder="Description"
-                    id="description"
-                    value={formData.description}
+                    label="Location"
+                    placeholder="Location"
+                    id="location"
+                    value={formData.location}
                     onChange={e => {
                         setFormData(data => ({
                             ...data,
-                            description: e.target.value,
+                            location: e.target.value,
                         }));
                     }}
                     className="add-company__input"

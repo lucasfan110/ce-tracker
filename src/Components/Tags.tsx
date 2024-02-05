@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import "./Tags.scss";
 
 interface Props extends React.ComponentPropsWithRef<"span"> {
@@ -5,7 +6,12 @@ interface Props extends React.ComponentPropsWithRef<"span"> {
     extraTagContentRender?: (tag: string) => React.ReactNode;
 }
 
-export default function Tags({ tags, extraTagContentRender, ...props }: Props) {
+export default function Tags({
+    tags,
+    extraTagContentRender,
+    className,
+    ...props
+}: Props) {
     function renderTags() {
         return tags.map(tag => {
             return (
@@ -18,7 +24,7 @@ export default function Tags({ tags, extraTagContentRender, ...props }: Props) {
     }
 
     return (
-        <span className="tags" {...props}>
+        <span className={classNames("tags", className)} {...props}>
             {renderTags()}
         </span>
     );

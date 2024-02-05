@@ -22,6 +22,10 @@ import IndexPage from "./Pages/IndexPage";
 import ServerDownPage from "./Pages/ServerDownPage";
 import SignInPage from "./Pages/SignInPage";
 import { checkIsSignedIn } from "./Pages/SignInPage/checkIsSignedIn";
+import mapboxgl from "mapbox-gl";
+
+mapboxgl.accessToken =
+    "pk.eyJ1IjoibHVjYXMtZmFuIiwiYSI6ImNsczg2eTRvdzFjZmcya283dHlqc2ZxM24ifQ.tadhq52OnV1ta0HEERH76g";
 
 const router = createHashRouter(
     createRoutesFromElements(
