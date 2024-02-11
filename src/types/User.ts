@@ -6,3 +6,7 @@ export interface User {
     phoneNumber: string;
     password: string;
 }
+
+export function getUserInitials(user: User): string {
+    return user.firstName[0].toUpperCase() + user.lastName[0].toUpperCase();
+}

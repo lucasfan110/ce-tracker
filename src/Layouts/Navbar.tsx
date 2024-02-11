@@ -37,6 +37,10 @@ export default function Navbar({ links, iconGoTo = "/" }: Props) {
                 </div>
                 <div className="nav__center">{renderLinks()}</div>
                 <div className="nav__right">
+                    {/* 
+                        So, we'll get the user account info using loader in some ways. It will be gotten from layout, passed down to navbar,
+                        which is right here, and then pass into the UserAccount component, where the pfp can then be rendered
+                    */}
                     <UserAccount />
                 </div>
             </div>

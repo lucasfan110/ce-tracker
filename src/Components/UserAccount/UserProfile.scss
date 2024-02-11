@@ -1,6 +1,8 @@
 @import "../../sass/abstracts/variables";
 
 .user-profile {
+    position: relative;
+
     &__profile-picture {
         background-color: $color-gray-3;
         width: 5rem;
@@ -15,5 +17,18 @@
         &:active {
             color: inherit;
         }
+    }
+
+    &__dropdown {
+        position: absolute;
+        top: 5rem;
+        right: 0;
+        z-index: 20;
+        background-color: $color-gray-light;
+        width: 20rem;
+        height: 30rem;
+        border-radius: 8px;
+        display: none;
+        transition: 0.3s all ease-in-out;
     }
 }

@@ -14,15 +14,17 @@ import AddCompany from "./Pages/DashboardPage/AddCompany";
 import CompanyDetail from "./Pages/DashboardPage/CompanyDetail";
 import DeleteCompany from "./Pages/DashboardPage/DeleteCompany";
 import EditCompany from "./Pages/DashboardPage/EditCompany";
-import {
-    userAndCompaniesLoader,
-    userAndCompanyLoader,
-} from "./Pages/DashboardPage/userAndCompaniesLoader";
+// import {
+//     userAndCompaniesLoader,
+//     userAndCompanyLoader,
+// } from "./Pages/DashboardPage/userAndCompaniesLoader";
 import IndexPage from "./Pages/IndexPage";
 import ServerDownPage from "./Pages/ServerDownPage";
 import SignInPage from "./Pages/SignInPage";
 import { checkIsSignedIn } from "./Pages/SignInPage/checkIsSignedIn";
 import mapboxgl from "mapbox-gl";
+import { userAndCompaniesLoader } from "./loaders/userAndCompaniesLoader";
+import { userAndCompanyLoader } from "./loaders/userAndCompanyLoader";
 
 mapboxgl.accessToken =
     "pk.eyJ1IjoibHVjYXMtZmFuIiwiYSI6ImNsczg2eTRvdzFjZmcya283dHlqc2ZxM24ifQ.tadhq52OnV1ta0HEERH76g";
@@ -32,6 +34,33 @@ const router = createHashRouter(
         <>
             <Route path="/" element={<AppIntroLayout />}>
                 <Route index element={<IndexPage />}></Route>
+                <Route path="/dashboard" element={<DashboardLayout />}>
+                    <Route
+                        index
+                        loader={userAndCompaniesLoader}
+                        element={<DashboardPage />}
+                    />
+                    <Route
+                        loader={userAndCompaniesLoader}
+                        path="add-company/"
+                        element={<AddCompany />}
+                    />
+                    <Route
+                        loader={userAndCompanyLoader}
+                        path="edit-company/:companyId"
+                        element={<EditCompany />}
+                    />
+                    <Route
+                        loader={userAndCompanyLoader}
+                        path="delete-company/:companyId"
+                        element={<DeleteCompany />}
+                    />
+                    <Route
+                        loader={userAndCompanyLoader}
+                        path="company/:companyId"
+                        element={<CompanyDetail />}
+                    />
+                </Route>
             </Route>
             <Route
                 loader={checkIsSignedIn}
@@ -39,33 +68,6 @@ const router = createHashRouter(
                 element={<SignInPage />}
             />
             <Route path="/server-down" element={<ServerDownPage />} />
-            <Route path="/dashboard" element={<DashboardLayout />}>
-                <Route
-                    index
-                    loader={userAndCompaniesLoader}
-                    element={<DashboardPage />}
-                />
-                <Route
-                    loader={userAndCompaniesLoader}
-                    path="add-company/"
-                    element={<AddCompany />}
-                />
-                <Route
-                    loader={userAndCompanyLoader}
-                    path="edit-company/:companyId"
-                    element={<EditCompany />}
-                />
-                <Route
-                    loader={userAndCompanyLoader}
-                    path="delete-company/:companyId"
-                    element={<DeleteCompany />}
-                />
-                <Route
-                    loader={userAndCompanyLoader}
-                    path="company/:companyId"
-                    element={<CompanyDetail />}
-                />
-            </Route>
         </>
     )
 );

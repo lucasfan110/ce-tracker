@@ -8,8 +8,6 @@ type Validate = {
     invalidMessage: string;
 };
 
-// type InputProps = ComponentPropsWithRef<"input">;
-
 export interface FormInputProps extends InputProps {
     label: string;
     validate?: Validate | Validate[];

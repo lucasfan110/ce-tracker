@@ -5,14 +5,13 @@ import validator from "validator";
 import Button from "../../Components/Button";
 import ErrorMessage from "../../Components/ErrorMessage";
 import FormInput from "../../Components/FormInput";
+import LinkButton from "../../Components/LinkButton";
 import TagInput from "../../Components/TagInput";
+import TextArea from "../../Components/TextArea";
+import { userAndCompanyLoader } from "../../loaders/userAndCompanyLoader";
 import { Company } from "../../types/Company";
-// It's kinda weird, but edit company and add company uses the same style
 import "./AddCompany.scss";
 import CompanyEndpoint from "./CompanyEndpint";
-import { userAndCompanyLoader } from "./userAndCompaniesLoader";
-import LinkButton from "../../Components/LinkButton";
-import TextArea from "../../Components/TextArea";
 
 type EditCompanyFormData = Omit<Company, "_id">;
 

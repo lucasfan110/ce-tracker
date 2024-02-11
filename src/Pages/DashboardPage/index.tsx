@@ -1,9 +1,9 @@
 import { useLoaderData } from "react-router-typesafe";
+import Input from "../../Components/Input";
 import LinkButton from "../../Components/LinkButton";
+import { userAndCompaniesLoader } from "../../loaders/userAndCompaniesLoader";
 import DisplayCompanies from "./DisplayCompanies";
 import "./index.scss";
-import { userAndCompaniesLoader } from "./userAndCompaniesLoader";
-import Input from "../../Components/Input";
 
 export default function DashboardPage() {
     const { companies, user } = useLoaderData<typeof userAndCompaniesLoader>();

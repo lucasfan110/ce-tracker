@@ -15,7 +15,7 @@
         background-color: $color-primary-light;
         padding: 4px 1rem;
         border-radius: 4rem;
-        font-size: 1.3rem;
+        font-size: $font-size-small;
 
         animation: tagZoomInAnimation 0.3s ease-in-out;
     }

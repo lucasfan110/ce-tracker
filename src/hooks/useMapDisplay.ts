@@ -1,6 +1,9 @@
 import mapboxgl from "mapbox-gl";
 import { useEffect, useRef, useState } from "react";
 
+const ZOOM = 16;
+const PITCH = 40;
+
 function getMapboxRequestURL(searchParam: string): string {
     const uriEncoded = encodeURIComponent(searchParam);
 
@@ -36,7 +39,7 @@ function add3DLayer(map: mapboxgl.Map) {
                 "source-layer": "building",
                 filter: ["==", "extrude", "true"],
                 type: "fill-extrusion",
-                minzoom: 15,
+                minzoom: 14,
                 paint: {
                     "fill-extrusion-color": "#aaa",
 
@@ -89,8 +92,8 @@ export default function useMapDisplay(
             container: container.current,
             style: "mapbox://styles/mapbox/standard",
             center: coord,
-            zoom: 16,
-            pitch: 45,
+            zoom: ZOOM,
+            pitch: PITCH,
             antialias: true,
         });
 

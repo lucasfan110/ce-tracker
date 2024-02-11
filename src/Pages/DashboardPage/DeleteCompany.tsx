@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import CompanyEndpoint from "./CompanyEndpint";
-import { userAndCompanyLoader } from "./userAndCompaniesLoader";
 import { useLoaderData } from "react-router-typesafe";
 import { useNavigate } from "react-router-dom";
+import { userAndCompanyLoader } from "../../loaders/userAndCompanyLoader";
 
 export default function DeleteCompany() {
     const navigate = useNavigate();

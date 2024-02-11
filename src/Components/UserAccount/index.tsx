@@ -1,13 +1,17 @@
-import { JWT_LOCAL_STORAGE_KEY } from "../../utils/constants";
-import UserSignIn from "./UserSignIn";
+import { useJWTValidation } from "../../hooks/useAuthorization";
 import UserProfile from "./UserProfile";
+import UserSignIn from "./UserSignIn";
 
 export default function UserAccount() {
-    const token = localStorage.getItem(JWT_LOCAL_STORAGE_KEY);
+    const { status, user } = useJWTValidation();
 
-    if (!token) {
+    if (status === "validating") {
+        return null;
+    }
+
+    if (status === "fail" || user === null) {
         return <UserSignIn />;
     }
 
-    return <UserProfile />;
+    return <UserProfile user={user} />;
 }
