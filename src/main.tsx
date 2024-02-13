@@ -25,6 +25,7 @@ import { checkIsSignedIn } from "./Pages/SignInPage/checkIsSignedIn";
 import mapboxgl from "mapbox-gl";
 import { userAndCompaniesLoader } from "./loaders/userAndCompaniesLoader";
 import { userAndCompanyLoader } from "./loaders/userAndCompanyLoader";
+import LogoutPage from "./Pages/LogoutPage";
 
 mapboxgl.accessToken =
     "pk.eyJ1IjoibHVjYXMtZmFuIiwiYSI6ImNsczg2eTRvdzFjZmcya283dHlqc2ZxM24ifQ.tadhq52OnV1ta0HEERH76g";
@@ -68,6 +69,7 @@ const router = createHashRouter(
                 element={<SignInPage />}
             />
             <Route path="/server-down" element={<ServerDownPage />} />
+            <Route path="/logout" element={<LogoutPage />} />
         </>
     )
 );

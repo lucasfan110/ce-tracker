@@ -6,6 +6,7 @@ import Tags from "../../Components/Tags";
 import useMapDisplay from "../../hooks/useMapDisplay";
 import "./CompanyDetail.scss";
 import { userAndCompanyLoader } from "../../loaders/userAndCompanyLoader";
+import { Link } from "react-router-dom";
 
 export default function CompanyDetail() {
     const mapContainer = useRef<HTMLDivElement>(null);
@@ -68,7 +69,9 @@ export default function CompanyDetail() {
                     </h4>
                     <p className="company-detail__content">
                         <i className="bi bi-envelope"></i>&nbsp;
-                        {email}
+                        <Link to={`mailto:${email}`} target="_blank">
+                            {email}
+                        </Link>
                     </p>
                 </div>
             </section>

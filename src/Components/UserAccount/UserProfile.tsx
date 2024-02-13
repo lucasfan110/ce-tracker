@@ -1,22 +1,23 @@
 import { useEffect, useRef, useState } from "react";
 import { User, getUserInitials } from "../../types/User";
 import "./UserProfile.scss";
+import UserProfileDropdown from "./UserProfileDropdown";
 
 interface Props {
     user: User;
 }
 
 export default function UserProfile({ user }: Props) {
-    const [dropdownDisplay, setDropdownDisplay] = useState<"none" | "initial">(
+    const [dropdownDisplay, setDropdownDisplay] = useState<"none" | "flex">(
         "none"
     );
     const [isClickedOpen, setIsClickedOpen] = useState(false);
     const profilePictureDiv = useRef<HTMLDivElement>(null);
-    const dropdownDiv = useRef<HTMLDivElement>(null);
+    const dropdownComponent = useRef<HTMLDivElement>(null);
 
     function handlePFPMouseOver() {
         if (!isClickedOpen) {
-            setDropdownDisplay("initial");
+            setDropdownDisplay("flex");
         }
     }
 
@@ -37,7 +38,7 @@ export default function UserProfile({ user }: Props) {
 
             if (
                 !profilePictureDiv.current?.contains(target) &&
-                !dropdownDiv.current?.contains(target)
+                !dropdownComponent.current?.contains(target)
             ) {
                 setIsClickedOpen(false);
                 setDropdownDisplay("none");
@@ -62,15 +63,22 @@ export default function UserProfile({ user }: Props) {
             >
                 {getUserInitials(user)}
             </div>
-            <div
+            {/* <div
                 className="user-profile__dropdown"
                 onMouseOver={handlePFPMouseOver}
                 onMouseOut={handlePFPMouseOut}
                 style={{ display: dropdownDisplay }}
                 ref={dropdownDiv}
             >
-                DROP DOWN TEXT
-            </div>
+                <h3>{`${user.firstName} ${user.lastName}`}</h3>
+            </div> */}
+            <UserProfileDropdown
+                user={user}
+                onMouseOver={handlePFPMouseOver}
+                onMouseOut={handlePFPMouseOut}
+                style={{ display: dropdownDisplay }}
+                ref={dropdownComponent}
+            />
         </div>
     );
 }

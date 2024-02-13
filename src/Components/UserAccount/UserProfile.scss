@@ -26,9 +26,11 @@
         z-index: 20;
         background-color: $color-gray-light;
         width: 20rem;
-        height: 30rem;
         border-radius: 8px;
         display: none;
         transition: 0.3s all ease-in-out;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
     }
 }
