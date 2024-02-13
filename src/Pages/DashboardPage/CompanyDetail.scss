@@ -38,16 +38,12 @@
     }
 
     &__section-heading {
-        font-size: $font-size-large;
-        font-weight: normal;
         width: 100%;
         margin-top: 2rem;
         margin-bottom: 1rem;
     }
 
     &__section-subheading {
-        font-size: $font-size-medium;
-        font-weight: normal;
         width: 100%;
     }
 
@@ -60,13 +56,6 @@
     &__content {
         width: 100%;
         font-size: $font-size-small;
-    }
-
-    &__section {
-        width: 100%;
-        background-color: $color-gray-lighter;
-        padding: 3rem;
-        border-radius: 6px;
     }
 
     &__contact-section {

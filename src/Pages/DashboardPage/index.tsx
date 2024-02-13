@@ -4,9 +4,13 @@ import LinkButton from "../../Components/LinkButton";
 import { userAndCompaniesLoader } from "../../loaders/userAndCompaniesLoader";
 import DisplayCompanies from "./DisplayCompanies";
 import "./index.scss";
+import PopUp from "../../Components/PopUp";
+import { useState } from "react";
+import Button from "../../Components/Button";
 
 export default function DashboardPage() {
     const { companies, user } = useLoaderData<typeof userAndCompaniesLoader>();
+    const [open, setOpen] = useState(true);
 
     return (
         <main className="dashboard-page">
@@ -20,6 +24,14 @@ export default function DashboardPage() {
             >
                 <i className="bi bi-plus-lg"></i>
             </LinkButton>
+            <PopUp open={open} setOpen={setOpen}>
+                <Button
+                    variation="primary"
+                    onClick={() => console.log("clicked!")}
+                >
+                    Click me!
+                </Button>
+            </PopUp>
         </main>
     );
 }

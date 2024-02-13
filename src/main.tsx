@@ -1,3 +1,4 @@
+import mapboxgl from "mapbox-gl";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import {
@@ -8,24 +9,20 @@ import {
 } from "react-router-dom";
 import "./index.scss";
 import AppIntroLayout from "./Layouts/AppIntroLayout";
-import DashboardLayout from "./Layouts/DashboardLayout";
+import ContainerLayout from "./Layouts/ContainerLayout";
+import { userAndCompaniesLoader } from "./loaders/userAndCompaniesLoader";
+import { userAndCompanyLoader } from "./loaders/userAndCompanyLoader";
 import DashboardPage from "./Pages/DashboardPage";
 import AddCompany from "./Pages/DashboardPage/AddCompany";
 import CompanyDetail from "./Pages/DashboardPage/CompanyDetail";
 import DeleteCompany from "./Pages/DashboardPage/DeleteCompany";
 import EditCompany from "./Pages/DashboardPage/EditCompany";
-// import {
-//     userAndCompaniesLoader,
-//     userAndCompanyLoader,
-// } from "./Pages/DashboardPage/userAndCompaniesLoader";
 import IndexPage from "./Pages/IndexPage";
+import LogoutPage from "./Pages/LogoutPage";
 import ServerDownPage from "./Pages/ServerDownPage";
 import SignInPage from "./Pages/SignInPage";
 import { checkIsSignedIn } from "./Pages/SignInPage/checkIsSignedIn";
-import mapboxgl from "mapbox-gl";
-import { userAndCompaniesLoader } from "./loaders/userAndCompaniesLoader";
-import { userAndCompanyLoader } from "./loaders/userAndCompanyLoader";
-import LogoutPage from "./Pages/LogoutPage";
+import ProfilePage from "./Pages/ProfilePage";
 
 mapboxgl.accessToken =
     "pk.eyJ1IjoibHVjYXMtZmFuIiwiYSI6ImNsczg2eTRvdzFjZmcya283dHlqc2ZxM24ifQ.tadhq52OnV1ta0HEERH76g";
@@ -35,7 +32,7 @@ const router = createHashRouter(
         <>
             <Route path="/" element={<AppIntroLayout />}>
                 <Route index element={<IndexPage />}></Route>
-                <Route path="/dashboard" element={<DashboardLayout />}>
+                <Route path="/dashboard" element={<ContainerLayout />}>
                     <Route
                         index
                         loader={userAndCompaniesLoader}
@@ -61,6 +58,9 @@ const router = createHashRouter(
                         path="company/:companyId"
                         element={<CompanyDetail />}
                     />
+                </Route>
+                <Route path="/profile" element={<ContainerLayout />}>
+                    <Route index element={<ProfilePage />} />
                 </Route>
             </Route>
             <Route

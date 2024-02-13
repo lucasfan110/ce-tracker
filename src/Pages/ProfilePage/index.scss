@@ -1,0 +1,9 @@
+@import "../../sass/abstracts/variables";
+
+.profile-page {
+    &__contacts {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+}

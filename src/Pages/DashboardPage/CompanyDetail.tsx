@@ -7,6 +7,7 @@ import useMapDisplay from "../../hooks/useMapDisplay";
 import "./CompanyDetail.scss";
 import { userAndCompanyLoader } from "../../loaders/userAndCompanyLoader";
 import { Link } from "react-router-dom";
+import Section from "../../Components/Section";
 
 export default function CompanyDetail() {
     const mapContainer = useRef<HTMLDivElement>(null);
@@ -38,7 +39,7 @@ export default function CompanyDetail() {
             </p>
 
             <h3 className="company-detail__section-heading">Location</h3>
-            <section className="company-detail__section">
+            <Section>
                 <p className="company-detail__content company-detail__location">
                     {location}
                 </p>
@@ -46,13 +47,13 @@ export default function CompanyDetail() {
                     ref={mapContainer}
                     className="company-detail__location-map"
                 />
-            </section>
+            </Section>
 
             <hr />
 
             <h3 className="company-detail__section-heading">Contact Info</h3>
 
-            <section className="company-detail__section company-detail__contact-section">
+            <Section className="company-detail__contact-section">
                 <div>
                     <h4 className="company-detail__section-subheading">
                         Phone Number
@@ -74,7 +75,7 @@ export default function CompanyDetail() {
                         </Link>
                     </p>
                 </div>
-            </section>
+            </Section>
         </div>
     );
 }
