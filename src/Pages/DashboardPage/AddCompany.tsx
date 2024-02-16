@@ -8,7 +8,7 @@ import FormInput from "../../Components/FormInput";
 import TagInput from "../../Components/TagInput";
 import { Company } from "../../types/Company";
 import "./AddCompany.scss";
-import CompanyEndpoint from "./CompanyEndpint";
+import CompanyEndpoint from "../../utils/CompanyEndpint";
 import LinkButton from "../../Components/LinkButton";
 import TextArea from "../../Components/TextArea";
 import { userAndCompaniesLoader } from "../../loaders/userAndCompaniesLoader";

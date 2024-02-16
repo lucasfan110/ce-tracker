@@ -1,7 +1,7 @@
-import { APIErrorResponse } from "../../types/APIErrorResponse";
-import { Company } from "../../types/Company";
-import { User } from "../../types/User";
-import { BACKEND_SERVER_ADDRESS } from "../../utils/constants";
+import { APIErrorResponse } from "../types/APIErrorResponse";
+import { Company } from "../types/Company";
+import { User } from "../types/User";
+import { BACKEND_SERVER_ADDRESS } from "./constants";
 
 export type GetAllCompaniesResult =
     | {

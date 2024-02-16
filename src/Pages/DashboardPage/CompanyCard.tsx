@@ -1,9 +1,10 @@
 import { useNavigate } from "react-router-dom";
+import sanitizeHTML from "sanitize-html";
+import ImageOrDefault from "../../Components/ImageOrDefault";
 import LinkButton from "../../Components/LinkButton";
+import Tags from "../../Components/Tags";
 import { Company } from "../../types/Company";
 import "./CompanyCard.scss";
-import ImageOrDefault from "../../Components/ImageOrDefault";
-import Tags from "../../Components/Tags";
 
 interface Props extends Company {}
 
@@ -35,7 +36,10 @@ export default function CompanyCard({
             </div>
             <div className="company-card__content">
                 <div className="company-card__space-between">
-                    <h3 className="company-card__name">{name}</h3>
+                    <h3
+                        className="company-card__name"
+                        dangerouslySetInnerHTML={{ __html: sanitizeHTML(name) }}
+                    ></h3>
 
                     <div className="company-card__icon-buttons">
                         <LinkButton

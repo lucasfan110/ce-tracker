@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import CompanyEndpoint from "./CompanyEndpint";
+import CompanyEndpoint from "../../utils/CompanyEndpint";
 import { useLoaderData } from "react-router-typesafe";
 import { useNavigate } from "react-router-dom";
 import { userAndCompanyLoader } from "../../loaders/userAndCompanyLoader";

@@ -1,6 +1,6 @@
 import { redirect } from "react-router-dom";
 import { LoaderFunction } from "react-router-typesafe";
-import CompanyEndpoint from "../Pages/DashboardPage/CompanyEndpint";
+import CompanyEndpoint from "../utils/CompanyEndpint";
 import { getUserFromToken } from "../hooks/useAuthorization";
 import { Company } from "../types/Company";
 import { JWT_LOCAL_STORAGE_KEY } from "../utils/constants";

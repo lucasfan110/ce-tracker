@@ -11,7 +11,7 @@ import TextArea from "../../Components/TextArea";
 import { userAndCompanyLoader } from "../../loaders/userAndCompanyLoader";
 import { Company } from "../../types/Company";
 import "./AddCompany.scss";
-import CompanyEndpoint from "./CompanyEndpint";
+import CompanyEndpoint from "../../utils/CompanyEndpint";
 
 type EditCompanyFormData = Omit<Company, "_id">;
 
