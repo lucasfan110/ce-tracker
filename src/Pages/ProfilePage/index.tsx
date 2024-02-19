@@ -1,14 +1,11 @@
 import { Link } from "react-router-dom";
+import { useLoaderData } from "react-router-typesafe";
 import Section from "../../Components/Section";
-import { useJWTValidation } from "../../hooks/useAuthorization";
+import { userLoader } from "../../loaders/userLoader";
 import "./index.scss";
 
 export default function ProfilePage() {
-    const { user } = useJWTValidation();
-
-    if (user === null) {
-        return null;
-    }
+    const { user } = useLoaderData<typeof userLoader>();
 
     return (
         <main className="profile-page">

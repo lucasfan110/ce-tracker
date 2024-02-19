@@ -21,6 +21,13 @@ const UserProfileDropdown = forwardRef<HTMLDivElement, Props>(
                 </div>
 
                 <div className="user-profile-dropdown__icon-link">
+                    <i className="bi bi-file-earmark-pdf user-profile-dropdown__icon" />
+                    <Link to="/generate-user-report" target="_blank">
+                        Generate Report
+                    </Link>
+                </div>
+
+                <div className="user-profile-dropdown__icon-link">
                     <i className="bi bi-box-arrow-right user-profile-dropdown__icon" />
                     <Link to="/logout">Logout</Link>
                 </div>

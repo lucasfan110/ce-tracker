@@ -19,10 +19,12 @@ import DeleteCompany from "./Pages/DashboardPage/DeleteCompany";
 import EditCompany from "./Pages/DashboardPage/EditCompany";
 import IndexPage from "./Pages/IndexPage";
 import LogoutPage from "./Pages/LogoutPage";
+import ProfilePage from "./Pages/ProfilePage";
 import ServerDownPage from "./Pages/ServerDownPage";
 import SignInPage from "./Pages/SignInPage";
 import { checkIsSignedIn } from "./Pages/SignInPage/checkIsSignedIn";
-import ProfilePage from "./Pages/ProfilePage";
+import GenerateUserReportPage from "./Pages/GenerateUserReportPage";
+import { userLoader } from "./loaders/userLoader";
 
 mapboxgl.accessToken =
     "pk.eyJ1IjoibHVjYXMtZmFuIiwiYSI6ImNsczg2eTRvdzFjZmcya283dHlqc2ZxM24ifQ.tadhq52OnV1ta0HEERH76g";
@@ -59,7 +61,11 @@ const router = createHashRouter(
                         element={<CompanyDetail />}
                     />
                 </Route>
-                <Route path="/profile" element={<ContainerLayout />}>
+                <Route
+                    path="/profile"
+                    loader={userLoader}
+                    element={<ContainerLayout />}
+                >
                     <Route index element={<ProfilePage />} />
                 </Route>
             </Route>
@@ -70,6 +76,11 @@ const router = createHashRouter(
             />
             <Route path="/server-down" element={<ServerDownPage />} />
             <Route path="/logout" element={<LogoutPage />} />
+            <Route
+                path="/generate-user-report"
+                loader={userLoader}
+                element={<GenerateUserReportPage />}
+            />
         </>
     )
 );

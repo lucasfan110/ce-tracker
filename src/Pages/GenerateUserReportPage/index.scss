@@ -1,0 +1,12 @@
+@import "../../sass/abstracts/variables";
+
+.generate-user-report-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+
+    &__loading-text {
+        font-size: $font-size-medium;
+    }
+}
