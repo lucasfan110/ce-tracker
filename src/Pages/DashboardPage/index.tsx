@@ -5,6 +5,7 @@ import "./index.scss";
 import { useState } from "react";
 import SearchCompany from "./SearchCompany";
 import CompanyCard from "./CompanyCard";
+import CompanyHintText from "./CompanyHintText";
 
 export default function DashboardPage() {
     const { companies, user } = useLoaderData<typeof userAndCompaniesLoader>();
@@ -17,27 +18,6 @@ export default function DashboardPage() {
         });
     }
 
-    function renderHintText(): React.ReactNode {
-        if (!companiesToDisplay.length && !query) {
-            return (
-                <div className="dashboard-page__hint-text">
-                    There are no companies in your account. Press the plus
-                    button on the bottom right corner to add a company!
-                </div>
-            );
-        }
-
-        if (!companiesToDisplay.length && !!query) {
-            return (
-                <div className="dashboard-page__hint-text">
-                    No companies found
-                </div>
-            );
-        }
-
-        return null;
-    }
-
     return (
         <main className="dashboard-page">
             Hello, {user.firstName}!
@@ -48,14 +28,17 @@ export default function DashboardPage() {
                 defaultCompanies={companies}
                 user={user}
             />
-            {renderHintText()}
+            <CompanyHintText
+                companiesToDisplay={companiesToDisplay}
+                query={query}
+            />
             <div>{renderCompanies()}</div>
             <LinkButton
                 to="/dashboard/add-company"
                 variation="primary"
                 className="add-company-button"
             >
-                <i className="bi bi-plus-lg"></i>
+                <i className="bi bi-plus-lg" />
             </LinkButton>
         </main>
     );
