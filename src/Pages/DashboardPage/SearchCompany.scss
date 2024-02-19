@@ -1,0 +1,35 @@
+@import "../../sass/abstracts/variables";
+
+.search-company {
+    &__form {
+        display: flex;
+        border: 1px solid $color-gray-dark;
+        border-radius: 6px;
+        width: 30rem;
+    }
+
+    &__input,
+    &__reset,
+    &__submit {
+        border: none;
+        border-radius: 6px;
+    }
+
+    &__input {
+        width: 100%;
+    }
+
+    &__submit {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        padding: 1rem 1.5rem;
+        cursor: pointer;
+    }
+
+    &__reset {
+        background: none;
+        font-size: $font-size-medium;
+        padding: 0 1rem;
+        cursor: pointer;
+    }
+}
