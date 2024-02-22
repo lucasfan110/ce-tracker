@@ -8,23 +8,15 @@ interface Props {
 const LINKS: Link[] = [
     {
         name: "Dashboard",
-        to: "dashboard",
+        to: "/dashboard",
     },
     {
-        name: "About Us",
-        to: "about-us",
-    },
-    {
-        name: "Resources",
-        to: "resources",
+        name: "Help",
+        to: "/help",
     },
 ];
 
 export default function AppIntroLayout({ children }: Props) {
-    /* 
-        We need to get user info from the loader 
-    */
-
     return (
         <>
             <Navbar links={LINKS} />

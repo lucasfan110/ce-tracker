@@ -25,6 +25,7 @@ import SignInPage from "./Pages/SignInPage";
 import { checkIsSignedIn } from "./Pages/SignInPage/checkIsSignedIn";
 import GenerateUserReportPage from "./Pages/GenerateUserReportPage";
 import { userLoader } from "./loaders/userLoader";
+import HelpPage from "./Pages/HelpPage";
 
 mapboxgl.accessToken =
     "pk.eyJ1IjoibHVjYXMtZmFuIiwiYSI6ImNsczg2eTRvdzFjZmcya283dHlqc2ZxM24ifQ.tadhq52OnV1ta0HEERH76g";
@@ -61,12 +62,15 @@ const router = createHashRouter(
                         element={<CompanyDetail />}
                     />
                 </Route>
-                <Route
-                    path="/profile"
-                    loader={userLoader}
-                    element={<ContainerLayout />}
-                >
-                    <Route index element={<ProfilePage />} />
+                <Route path="/profile" element={<ContainerLayout />}>
+                    <Route
+                        index
+                        loader={userLoader}
+                        element={<ProfilePage />}
+                    />
+                </Route>
+                <Route path="/help" element={<ContainerLayout />}>
+                    <Route index element={<HelpPage />} />
                 </Route>
             </Route>
             <Route

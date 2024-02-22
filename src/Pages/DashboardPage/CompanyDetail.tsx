@@ -19,7 +19,7 @@ export default function CompanyDetail() {
         email,
         location,
         phoneNumber,
-        resources,
+        // resources,
         type,
     } = company;
     useMapDisplay(location, mapContainer);
