@@ -35,42 +35,40 @@ const router = createHashRouter(
         <>
             <Route path="/" element={<AppIntroLayout />}>
                 <Route index element={<IndexPage />}></Route>
-                <Route path="/dashboard" element={<ContainerLayout />}>
+                <Route element={<ContainerLayout />}>
+                    <Route path="/dashboard">
+                        <Route
+                            index
+                            loader={userAndCompaniesLoader}
+                            element={<DashboardPage />}
+                        />
+                        <Route
+                            loader={userAndCompaniesLoader}
+                            path="add-company/"
+                            element={<AddCompany />}
+                        />
+                        <Route
+                            loader={userAndCompanyLoader}
+                            path="edit-company/:companyId"
+                            element={<EditCompany />}
+                        />
+                        <Route
+                            loader={userAndCompanyLoader}
+                            path="delete-company/:companyId"
+                            element={<DeleteCompany />}
+                        />
+                        <Route
+                            loader={userAndCompanyLoader}
+                            path="company/:companyId"
+                            element={<CompanyDetail />}
+                        />
+                    </Route>
                     <Route
-                        index
-                        loader={userAndCompaniesLoader}
-                        element={<DashboardPage />}
-                    />
-                    <Route
-                        loader={userAndCompaniesLoader}
-                        path="add-company/"
-                        element={<AddCompany />}
-                    />
-                    <Route
-                        loader={userAndCompanyLoader}
-                        path="edit-company/:companyId"
-                        element={<EditCompany />}
-                    />
-                    <Route
-                        loader={userAndCompanyLoader}
-                        path="delete-company/:companyId"
-                        element={<DeleteCompany />}
-                    />
-                    <Route
-                        loader={userAndCompanyLoader}
-                        path="company/:companyId"
-                        element={<CompanyDetail />}
-                    />
-                </Route>
-                <Route path="/profile" element={<ContainerLayout />}>
-                    <Route
-                        index
+                        path="/profile"
                         loader={userLoader}
                         element={<ProfilePage />}
                     />
-                </Route>
-                <Route path="/help" element={<ContainerLayout />}>
-                    <Route index element={<HelpPage />} />
+                    <Route path="/help" element={<HelpPage />} />
                 </Route>
             </Route>
             <Route

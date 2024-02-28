@@ -3,3 +3,7 @@
 .u-container {
     @include container;
 }
+
+.u-no-animation {
+    animation-duration: 0s !important;
+}

@@ -1,0 +1,41 @@
+.chatbot-window {
+    &__button {
+        position: fixed;
+        bottom: 5rem;
+        right: 5rem;
+        font-size: 3rem;
+        width: 8rem;
+        height: 8rem;
+        border-radius: 50%;
+
+        &--active {
+            animation: enlargeAnimation 0.4s forwards;
+        }
+
+        &--inactive {
+            animation: reduceAnimation 0.4s forwards;
+        }
+    }
+
+    &__window {
+        border: 2px solid black;
+        width: 50rem;
+        height: 40rem;
+        position: fixed;
+        bottom: 9rem;
+        right: 9rem;
+        z-index: 10;
+        transform-origin: bottom right;
+        opacity: 0;
+
+        &--active {
+            animation: enlargeAnimation 0.4s 0.2s backwards,
+                fadeIn 0.4s 0.2s forwards;
+        }
+
+        &--inactive {
+            animation: reduceAnimation 0.4s 0.2s forwards,
+                fadeOut 0.4s 0.2s forwards;
+        }
+    }
+}

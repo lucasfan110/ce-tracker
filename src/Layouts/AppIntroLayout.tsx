@@ -1,4 +1,6 @@
 import { Outlet, ScrollRestoration } from "react-router-dom";
+import ChatbotWindow from "../Components/ChatbotWindow";
+import "./AppIntroLayout.scss";
 import Navbar, { Link } from "./Navbar";
 
 interface Props {
@@ -21,6 +23,7 @@ export default function AppIntroLayout({ children }: Props) {
         <>
             <Navbar links={LINKS} />
             {children ?? <Outlet />}
+            <ChatbotWindow />
             <ScrollRestoration />
         </>
     );

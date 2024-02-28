@@ -125,7 +125,7 @@ export default function AddCompany() {
                     <label htmlFor="tags">Company Tags</label>
                     <TagInput
                         id="tags"
-                        placeholder="Add Tag"
+                        placeholder="Type The Tag And Press Enter To Add Tag..."
                         tags={formData.type}
                         onTagsChange={tags => {
                             setFormData(data => ({
