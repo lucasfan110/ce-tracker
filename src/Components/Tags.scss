@@ -14,7 +14,7 @@
         justify-content: center;
         background-color: $color-primary-light;
         padding: 4px 1rem;
-        border-radius: 4rem;
+        border-radius: $border-radius-extra-large;
         font-size: $font-size-small;
 
         animation: enlargeAnimation 0.3s ease-in-out;

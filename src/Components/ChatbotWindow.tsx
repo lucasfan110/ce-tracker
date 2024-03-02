@@ -26,7 +26,36 @@ export default function ChatbotWindow() {
                         "u-no-animation": noAnimation,
                     }
                 )}
-            ></div>
+            >
+                <div className="chatbot-window__title-bar">
+                    <span className="chatbot-window__empty-square" />
+                    <span className="chatbot-window__title">Chatbot</span>
+                    <Button
+                        className="chatbot-window__close-window"
+                        onClick={() => setDisplayWindow(false)}
+                    >
+                        <i className="bi bi-x-lg chatbot-window__close-window-icon" />
+                    </Button>
+                </div>
+                <div className="chatbot-window__chat"></div>
+                <div className="chatbot-window__input-box">
+                    <form
+                        className="chatbot-window__input-form"
+                        onSubmit={() => console.log("submitted")}
+                    >
+                        <Button type="button">
+                            <i className="bi bi-emoji-smile" />
+                        </Button>
+                        <input
+                            className="chatbot-window__input"
+                            placeholder="Type a message..."
+                        />
+                        <Button type="submit" className="chatbot-window__send">
+                            Send
+                        </Button>
+                    </form>
+                </div>
+            </div>
             <Button
                 className={classNames("chatbot-window__button", {
                     "chatbot-window__button--active": !displayWindow,

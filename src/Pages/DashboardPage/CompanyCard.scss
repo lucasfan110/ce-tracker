@@ -2,9 +2,8 @@
 
 .company-card {
     width: min(90vw, 100rem);
-    // background-color: $color-primary-light;
     height: 25rem;
-    border-radius: 0.6rem;
+    border-radius: $border-radius-medium;
     overflow: hidden;
     box-shadow: 0 0.4rem 1.2rem rgba($color-black, 0.2);
     display: flex;

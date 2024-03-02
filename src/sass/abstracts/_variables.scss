@@ -18,6 +18,7 @@ $color-secondary-dark: darken($color-secondary, 5%);
 
 $color-tertiary: #8700ba;
 
+$color-box-shadow-dark: rgba($color-black, 0.4);
 $color-box-shadow: rgba($color-black, 0.2);
 $color-box-shadow-light: rgba($color-black, 0.1);
 
@@ -28,3 +29,7 @@ $container-width: 104rem;
 $font-size-small: 1.4rem;
 $font-size-medium: 1.6rem;
 $font-size-large: 2.2rem;
+
+$border-radius-small: 4px;
+$border-radius-medium: 6px;
+$border-radius-extra-large: 2rem;

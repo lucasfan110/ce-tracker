@@ -4,7 +4,7 @@
     &__form {
         display: flex;
         border: 1px solid $color-gray-dark;
-        border-radius: 6px;
+        border-radius: $border-radius-medium;
         width: 30rem;
     }
 
@@ -12,7 +12,7 @@
     &__reset,
     &__submit {
         border: none;
-        border-radius: 6px;
+        border-radius: $border-radius-medium;
     }
 
     &__input {
