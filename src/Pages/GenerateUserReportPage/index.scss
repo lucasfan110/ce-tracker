@@ -9,4 +9,16 @@
     &__loading-text {
         font-size: $font-size-medium;
     }
+
+    &__customize-report-form {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+    }
+
+    &__show-contacts {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+    }
 }

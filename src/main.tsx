@@ -68,6 +68,11 @@ const router = createHashRouter(
                         loader={userLoader}
                         element={<ProfilePage />}
                     />
+                    <Route
+                        path="/generate-user-report"
+                        loader={userLoader}
+                        element={<GenerateUserReportPage />}
+                    />
                     <Route path="/help" element={<HelpPage />} />
                 </Route>
             </Route>
@@ -78,11 +83,6 @@ const router = createHashRouter(
             />
             <Route path="/server-down" element={<ServerDownPage />} />
             <Route path="/logout" element={<LogoutPage />} />
-            <Route
-                path="/generate-user-report"
-                loader={userLoader}
-                element={<GenerateUserReportPage />}
-            />
         </>
     )
 );

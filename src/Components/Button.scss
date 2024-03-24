@@ -16,6 +16,15 @@
         background-color: $color-gray-light;
     }
 
+    &:disabled {
+        background-color: $color-gray-2;
+        cursor: default;
+
+        &:hover {
+            background-color: $color-gray-2;
+        }
+    }
+
     &--primary {
         background-color: $color-primary;
         color: $color-white;

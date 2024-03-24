@@ -56,6 +56,7 @@ export default function ChatbotWindow() {
             return;
         }
 
+        // Scroll to the bottom
         chatbotWindowChatRef.current.scrollTop =
             chatbotWindowChatRef.current.scrollHeight;
     }, [messages]);
@@ -88,6 +89,7 @@ export default function ChatbotWindow() {
             },
         ]);
 
+        // TODO: Handle request error
         const response = await requestAIResponse(message);
 
         setMessages(messages => [
@@ -131,9 +133,6 @@ export default function ChatbotWindow() {
                         className="chatbot-window__input-form"
                         onSubmit={onInputFormSubmit}
                     >
-                        {/* <Button type="button">
-                            <i className="bi bi-emoji-smile" />
-                        </Button> */}
                         <input
                             className="chatbot-window__input"
                             placeholder="Type a message..."
