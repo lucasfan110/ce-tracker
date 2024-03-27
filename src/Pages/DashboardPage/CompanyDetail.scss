@@ -6,6 +6,7 @@
     justify-content: center;
     flex-direction: column;
     min-width: 100%;
+    padding-bottom: 10rem;
 
     &__banner-container {
         height: 10rem;
@@ -67,5 +68,10 @@
     &__location-map {
         width: 100%;
         height: 40rem;
+    }
+
+    &__resources {
+        display: flex;
+        flex-direction: column;
     }
 }

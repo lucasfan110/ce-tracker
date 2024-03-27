@@ -19,10 +19,23 @@ export default function CompanyDetail() {
         email,
         location,
         phoneNumber,
-        // resources,
+        resources,
         type,
     } = company;
     useMapDisplay(location, mapContainer);
+
+    function renderResources() {
+        return resources.map((resource, index) => (
+            <Link
+                to={resource.link}
+                key={index}
+                className="company-detail__resource-link"
+                target="_blank"
+            >
+                {resource.name}
+            </Link>
+        ));
+    }
 
     return (
         <div className="company-detail">
@@ -49,8 +62,6 @@ export default function CompanyDetail() {
                 />
             </Section>
 
-            <hr />
-
             <h3 className="company-detail__section-heading">Contact Info</h3>
 
             <Section className="company-detail__contact-section">
@@ -74,6 +85,15 @@ export default function CompanyDetail() {
                             {email}
                         </Link>
                     </p>
+                </div>
+            </Section>
+
+            <h3 className="company-detail__section-heading">Resources</h3>
+            <Section className="company-detail__resources-section">
+                <div>
+                    <div className="company-detail__resources">
+                        {renderResources()}
+                    </div>
                 </div>
             </Section>
         </div>

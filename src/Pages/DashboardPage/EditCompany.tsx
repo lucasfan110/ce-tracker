@@ -10,8 +10,9 @@ import TagInput from "../../Components/TagInput";
 import TextArea from "../../Components/TextArea";
 import { userAndCompanyLoader } from "../../loaders/userAndCompanyLoader";
 import { Company } from "../../types/Company";
-import "./AddCompany.scss";
 import CompanyEndpoint from "../../utils/CompanyEndpint";
+import "./AddCompany.scss";
+import ResourceEditor from "../../Components/ResourceEditor";
 
 type EditCompanyFormData = Omit<Company, "_id">;
 
@@ -50,141 +51,142 @@ export default function EditCompany() {
                     aria-hidden="true"
                 ></button>
 
-                <FormInput
-                    label="Name"
-                    placeholder="Name"
-                    id="name"
-                    required
-                    validate={{
-                        validator: v => v !== "",
-                        invalidMessage: "Please put in the company's name",
-                    }}
-                    value={formData.name}
-                    maxLength={100}
-                    onChange={e => {
-                        setFormData(data => ({
-                            ...data,
-                            name: e.target.value,
-                        }));
-                    }}
-                    className="add-company__input"
-                />
+                <div className="add-company__inputs">
+                    <div className="add-company__column">
+                        <FormInput
+                            label="Name"
+                            placeholder="Name"
+                            id="name"
+                            required
+                            validate={{
+                                validator: v => v !== "",
+                                invalidMessage:
+                                    "Please put in the company's name",
+                            }}
+                            value={formData.name}
+                            maxLength={100}
+                            onChange={e => {
+                                setFormData(data => ({
+                                    ...data,
+                                    name: e.target.value,
+                                }));
+                            }}
+                            className="add-company__input"
+                        />
 
-                <FormInput
-                    label="Company Email"
-                    type="email"
-                    placeholder="Company Email"
-                    id="email"
-                    value={formData.email}
-                    maxLength={100}
-                    onChange={e => {
-                        setFormData(data => ({
-                            ...data,
-                            email: e.target.value,
-                        }));
-                    }}
-                    validate={{
-                        validator: validator.isEmail,
-                        invalidMessage: "Please put in a valid email",
-                    }}
-                    className="add-company__input"
-                />
+                        <FormInput
+                            label="Company Email"
+                            type="email"
+                            placeholder="Company Email"
+                            id="email"
+                            value={formData.email}
+                            maxLength={100}
+                            onChange={e => {
+                                setFormData(data => ({
+                                    ...data,
+                                    email: e.target.value,
+                                }));
+                            }}
+                            validate={{
+                                validator: validator.isEmail,
+                                invalidMessage: "Please put in a valid email",
+                            }}
+                            className="add-company__input"
+                        />
 
-                <FormInput
-                    label="Phone Number"
-                    placeholder="Phone Number"
-                    id="phone-number"
-                    validate={[
-                        {
-                            validator: validator.isMobilePhone,
-                            invalidMessage:
-                                "Please put in a valid phone number",
-                        },
-                    ]}
-                    value={formData.phoneNumber}
-                    onChange={e => {
-                        setFormData(data => ({
-                            ...data,
-                            phoneNumber: e.target.value,
-                        }));
-                    }}
-                    className="add-company__input"
-                />
+                        <FormInput
+                            label="Phone Number"
+                            placeholder="Phone Number"
+                            id="phone-number"
+                            validate={[
+                                {
+                                    validator: validator.isMobilePhone,
+                                    invalidMessage:
+                                        "Please put in a valid phone number",
+                                },
+                            ]}
+                            value={formData.phoneNumber}
+                            onChange={e => {
+                                setFormData(data => ({
+                                    ...data,
+                                    phoneNumber: e.target.value,
+                                }));
+                            }}
+                            className="add-company__input"
+                        />
 
-                <div>
-                    <label htmlFor="tags">Company Tags</label>
-                    <TagInput
-                        id="tags"
-                        placeholder="Add Tag"
-                        tags={formData.type}
-                        onTagsChange={tags => {
-                            setFormData(data => ({
-                                ...data,
-                                type: tags,
-                            }));
-                        }}
-                        className="add-company__input"
-                    />
+                        <div>
+                            <label htmlFor="tags">Company Tags</label>
+                            <TagInput
+                                id="tags"
+                                placeholder="Type in the tag and press enter to add tag..."
+                                tags={formData.type}
+                                onTagsChange={tags => {
+                                    setFormData(data => ({
+                                        ...data,
+                                        type: tags,
+                                    }));
+                                }}
+                                className="add-company__input"
+                            />
+                        </div>
+
+                        <FormInput
+                            label="Company Image Url"
+                            placeholder="Company Image Url"
+                            id="company-image"
+                            value={formData.image}
+                            onChange={e => {
+                                setFormData(data => ({
+                                    ...data,
+                                    image: e.target.value,
+                                }));
+                            }}
+                            className="add-company__input"
+                        />
+
+                        <div>
+                            <label htmlFor="description">Description</label>
+                            <TextArea
+                                id="description"
+                                placeholder="Description"
+                                value={formData.description}
+                                onChange={e => {
+                                    setFormData(data => ({
+                                        ...data,
+                                        description: e.target.value,
+                                    }));
+                                }}
+                                className="add-company__input"
+                                rows={10}
+                            />
+                        </div>
+                    </div>
+
+                    <div className="add-company__column">
+                        <FormInput
+                            label="Location"
+                            placeholder="Location"
+                            id="location"
+                            value={formData.location}
+                            onChange={e => {
+                                setFormData(data => ({
+                                    ...data,
+                                    location: e.target.value,
+                                }));
+                            }}
+                            className="add-company__input"
+                        />
+
+                        <label>Resources</label>
+                        <ResourceEditor
+                            resources={formData.resources}
+                            setResources={resources =>
+                                setFormData(data => ({ ...data, resources }))
+                            }
+                        />
+                    </div>
                 </div>
-
-                <FormInput
-                    label="Company Image Url"
-                    placeholder="Company Image Url"
-                    id="company-image"
-                    value={formData.image}
-                    onChange={e => {
-                        setFormData(data => ({
-                            ...data,
-                            image: e.target.value,
-                        }));
-                    }}
-                    className="add-company__input"
-                />
-
-                <FormInput
-                    label="Location"
-                    placeholder="Location"
-                    id="location"
-                    value={formData.location}
-                    onChange={e => {
-                        setFormData(data => ({
-                            ...data,
-                            location: e.target.value,
-                        }));
-                    }}
-                    className="add-company__input"
-                />
-
-                <div>
-                    <label htmlFor="description">Description</label>
-                    <TextArea
-                        id="description"
-                        placeholder="Description"
-                        value={formData.description}
-                        onChange={e => {
-                            setFormData(data => ({
-                                ...data,
-                                description: e.target.value,
-                            }));
-                        }}
-                        className="add-company__input"
-                        rows={10}
-                    />
-                </div>
-
-                <FormInput
-                    label="Resources"
-                    placeholder="Resources"
-                    id="resources"
-                    value={formData.resources}
-                    onChange={e => {
-                        setFormData(data => ({
-                            ...data,
-                            resources: [e.target.value],
-                        }));
-                    }}
-                    className="add-company__input"
-                />
 
                 <Button variation="primary" className="add-company__button">
                     Edit

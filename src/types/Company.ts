@@ -1,3 +1,8 @@
+export type Resource = {
+    name: string;
+    link: string;
+};
+
 export interface Company {
     _id: string;
     name: string;
@@ -5,7 +10,7 @@ export interface Company {
     location: string;
     phoneNumber: string;
     email: string;
-    resources: string[];
+    resources: Resource[];
     image: string;
     description: string;
 }
